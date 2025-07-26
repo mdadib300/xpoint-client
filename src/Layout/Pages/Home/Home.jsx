@@ -1,0 +1,21 @@
+import BottomNav from "./BottomNav/BottomNav";
+import Export from "./Export/Export";
+import Faq from "./Faq/Faq";
+import Slider from "./Slider/Slider";
+import Video from "./Video/Video";
+
+
+const Home = () => {
+
+    return (
+        <div>
+            <BottomNav></BottomNav>
+            <Slider></Slider>
+            <Faq></Faq>
+            <Video></Video>
+            <Export></Export>
+        </div>
+    );
+};
+
+export default Home;
