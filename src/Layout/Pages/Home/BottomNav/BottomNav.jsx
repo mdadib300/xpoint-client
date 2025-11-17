@@ -24,7 +24,7 @@ const BottomNav = () => {
     </>;
 
     return (
-        <div>
+        <div className="">
             <div className="block lg:hidden">
                 <div className="dock bg-neutral-800 text-white">
                     <div className="mx-auto">

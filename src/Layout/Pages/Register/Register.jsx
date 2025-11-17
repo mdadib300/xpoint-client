@@ -88,7 +88,7 @@ const Register = () => {
     }
 
     return (
-        <div className="hero bg-base-200 py-5 lg:py-10">
+        <div className="hero py-5 lg:py-10">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-semibold uppercase text-center">Register</h1>
@@ -96,21 +96,21 @@ const Register = () => {
                         <img src={regImg} className="w-lg" />
                     </div>
                 </div>
-                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl me-0 lg:me-20">
+                <div className="card w-full max-w-sm shrink-0 shadow-2xl me-0 lg:me-20">
                     <div className="card-body">
                         <SocialLogin></SocialLogin>
                         <p className="text-center">---------- Or ----------</p>
                         <fieldset className="fieldset">
                             <form onSubmit={handleRegister}>
                                 <label className="label">Enter Your Full Name</label>
-                                <input required type="text" className="input" name="name" />
+                                <input required type="text" className="input border-gray-200 bg-white" name="name" />
                                 <label className="label">Enter Your Email</label>
-                                <input required type="email" className="input" name="email" />
+                                <input required type="email" className="input border-gray-200 bg-white" name="email" />
                                 <label className="label">Create a Password</label>
-                                <input required type={showPassword ? "text" : "password"} className="input" name="password" />
+                                <input required type={showPassword ? "text" : "password"} className="input border-gray-200 bg-white" name="password" />
                                 <button
                                     type="button"
-                                    className="absolute right-13 top-[58%] -translate-y-1/2"
+                                    className="absolute right-13 top-[66%] -translate-y-1/2"
                                     onClick={() => setShowPassword((prev) => !prev)}
                                 >
                                     {showPassword ? <img src={hide} className="w-4" /> : <img src={view} className="w-4" />}

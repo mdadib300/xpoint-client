@@ -71,7 +71,7 @@ const Login = () => {
     };
 
     return (
-        <div className="hero bg-base-200 py-5 lg:py-10">
+        <div className="hero py-5 lg:py-10">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-semibold uppercase text-center">Login</h1>
@@ -79,16 +79,16 @@ const Login = () => {
                         <img src={logImg} className="w-lg" />
                     </div>
                 </div>
-                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl me-0 lg:me-20">
+                <div className="card w-full max-w-sm shrink-0 shadow-2xl me-0 lg:me-20">
                     <div className="card-body">
                         <SocialLogin></SocialLogin>
                         <p className="text-center">---------- Or ----------</p>
                         <fieldset className="fieldset">
                             <form onSubmit={handleLogin}>
                                 <label className="label">Enter Your Email</label>
-                                <input required type="email" className="input" name="email" />
+                                <input required type="email" className="input bg-white border-gray-200" name="email" />
                                 <label className="label">Enter Your Password</label>
-                                <input required type="password" className="input" name="password" />
+                                <input required type="password" className="input bg-white border-gray-200" name="password" />
                                 <div className="mt-2"><p>Forget Password? <button onClick={handleForgotPassword} className="link link-hover font-semibold">Click here</button></p></div>
                                 <div className="mt-2"><p>Don't have an account? <Link to='/register' className="link link-hover font-semibold">Register</Link></p></div>
                                 <input type="submit" value="Login" className="btn btn-neutral mt-4" />

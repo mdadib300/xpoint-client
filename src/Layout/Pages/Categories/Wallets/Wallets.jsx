@@ -6,9 +6,15 @@ import useProducts from "../../../../Hooks/useProducts";
 const Wallets = () => {
     const [wallets] = useProducts("Wallets");
     return (
-        <div>
+        <div className="bg-white text-black min-h-screen">
             <CategoryTitle titleText="Wallets"></CategoryTitle>
-            <ProductDisplay products={wallets}></ProductDisplay>
+            {wallets.length === 0 ? (
+                <p className="text-center text-lg mt-20 opacity-70">
+                    No products available in this category, will be added soon!
+                </p>
+            ) : (
+                <ProductDisplay products={wallets}></ProductDisplay>
+            )}
         </div>
     );
 };

@@ -6,9 +6,15 @@ import ProductDisplay from "../../../../Components/ProductDisplay/ProductDisplay
 const DenimPants = () => {
     const [denimPants] = useProducts('Denim Pants');
     return (
-        <div>
+        <div className="bg-white text-black min-h-screen">
             <CategoryTitle titleText="Denim Pants"></CategoryTitle>
+            {denimPants.length === 0 ? (
+                <p className="text-center text-lg mt-20 opacity-70">
+                    No products available in this category, will be added soon!
+                </p>
+            ) : (
             <ProductDisplay products={denimPants}></ProductDisplay>
+            )}
         </div>
     );
 };

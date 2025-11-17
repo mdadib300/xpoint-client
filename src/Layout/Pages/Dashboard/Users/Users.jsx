@@ -65,7 +65,7 @@ const Users = () => {
         });
     }
     return (
-        <div>
+        <div className="min-h-screen">
             <h1 className='text-2xl font-semibold mb-2'>Users</h1>
             <h1 className="mb-5">Total Users: {users.length}</h1>
             <div>

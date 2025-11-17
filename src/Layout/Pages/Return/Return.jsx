@@ -1,10 +1,11 @@
+import Title from "../../../Components/Title/Title";
 
 
 const Return = () => {
     return (
-        <div className="mx-3 md:mx-7">
-            <h1 className="text-2xl md:text-3xl font-bold text-center my-5">XPoint's Return & Exchange Policy</h1>
-            <p className="mb-5">At XPoint, we value our customers and aim to provide the best shopping experience. However, we understand that sometimes a purchase may not turn out as expected. That’s why we offer a straightforward and customer-friendly return and exchange policy to ensure your satisfaction. <br /> <br />
+        <div className="px-3 md:px-7 bg-white text-black">
+            <Title heading={'Return & Exchange'} subheading={'Our Return & Exchange Policies'}></Title>
+            <p className="pb-5">At XPoint, we value our customers and aim to provide the best shopping experience. However, we understand that sometimes a purchase may not turn out as expected. That’s why we offer a straightforward and customer-friendly return and exchange policy to ensure your satisfaction. <br /> <br />
 
                 Products purchased from XPoint can be returned or exchanged within <b>3 days</b> of purchase. To be eligible, the item must be in <b>unused and original condition</b>, with the <b>product tag intact and undamaged</b>. We take product tags seriously, as they serve as proof of authenticity and product integrity. Any item returned without its tag or with a damaged tag will unfortunately not be accepted for return or exchange. <br /> <br />
 

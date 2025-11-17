@@ -75,7 +75,7 @@ const router = createBrowserRouter([
       {
         path: '/details/:id',
         element: <ProductDetails></ProductDetails>,
-        loader: ({ params }) => fetch(`http://localhost:3000/products/${params.id}`)
+        loader: ({ params }) => fetch(`https://xpoint-server.vercel.app/products/${params.id}`)
       },
       {
         path: '/denimpants',
@@ -164,7 +164,7 @@ const router = createBrowserRouter([
       {
         path: 'updateProduct/:id',
         element: <AdminRoute><UpdateProduct></UpdateProduct></AdminRoute>,
-        loader: ({ params }) => fetch(`http://localhost:3000/products/${params.id}`)
+        loader: ({ params }) => fetch(`https://xpoint-server.vercel.app/products/${params.id}`)
       },
       {
         path: 'allOrders',

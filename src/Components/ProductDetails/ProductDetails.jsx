@@ -6,6 +6,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useCart from "../../Hooks/useCart";
 import CategoryTitle from "../CategoryTitle/CategoryTitle";
 import { Carousel } from 'react-responsive-carousel';
+import ScrollToTop from "../ScrollToTop";
 
 
 const ProductDetails = () => {
@@ -66,9 +67,10 @@ const ProductDetails = () => {
     }
 
     return (
-        <div>
+        <div className="bg-white text-black">
+            <ScrollToTop></ScrollToTop>
             <CategoryTitle titleText={category}></CategoryTitle>
-            <div className="hero mb-10">
+            <div className="hero pb-10">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="w-full">
                         <Carousel
@@ -105,21 +107,21 @@ const ProductDetails = () => {
                             <form onSubmit={handleCart}>
                                 <fieldset className="fieldset">
                                     <label className="label">Size</label>
-                                    <select defaultValue="" className="select" name="size">
+                                    <select defaultValue="" className="select bg-white" name="size">
                                         <option disabled value="">Select Size (If applicable)</option>
                                         {
                                             sizes?.map(size => <option>{size}</option>)
                                         }
                                     </select>
                                     <label className="label">Select the color</label>
-                                    <select defaultValue="" className="select" name="color">
+                                    <select defaultValue="" className="select bg-white" name="color">
                                         <option disabled value="">Select Color (If applicable)</option>
                                         {
                                             colors?.map(color => <option>{color}</option>)
                                         }
                                     </select>
                                     <label className="label">Quantity</label>
-                                    <input required defaultValue={1} type="number" className="input" name="quantity" />
+                                    <input required defaultValue={1} type="number" className="input bg-white" name="quantity" />
                                     <input type="submit" value="Add to Cart" className="btn btn-neutral btn-outline btn-wide mt-4" />
                                 </fieldset>
                             </form>

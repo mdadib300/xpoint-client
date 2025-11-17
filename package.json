@@ -18,6 +18,7 @@
     "match-sorter": "^8.0.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-fast-marquee": "^1.6.5",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^7.6.3",
     "react-simple-typewriter": "^5.0.1",

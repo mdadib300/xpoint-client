@@ -5,7 +5,7 @@ import yt from '../../../../assets/images/icons/youtube.png';
 
 const Footer = () => {
     return (
-        <footer className="footer footer-horizontal footer-center bg-neutral-800 text-white p-10 mb-14">
+        <footer className="footer footer-horizontal footer-center bg-neutral-800 text-white p-10">
             <nav className="grid grid-flow-col gap-4">
                 <a className="link link-hover"><Link to='/about'>About us</Link></a>
                 <a className="link link-hover"><Link to='/return'>Return Policy</Link></a>
@@ -26,7 +26,7 @@ const Footer = () => {
             </nav>
             <aside>
                 <p>Copyright © {new Date().getFullYear()} - All rights reserved by XPoint</p>
-                <p>Version - 1.0</p>
+                <p>Version - 1.1</p>
             </aside>
         </footer>
     );

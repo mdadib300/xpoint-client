@@ -43,7 +43,7 @@ const AllOrders = () => {
     };
 
     return (
-        <div>
+        <div className="min-h-screen">
             <h1 className='text-2xl font-semibold mb-2'>All Orders</h1>
             <div>
                 <div className="overflow-x-auto">

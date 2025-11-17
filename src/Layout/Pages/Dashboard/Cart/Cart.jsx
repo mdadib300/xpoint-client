@@ -40,7 +40,7 @@ const Cart = () => {
     }
 
     return (
-        <div>
+        <div className="min-h-screen">
             <h1 className="text-2xl"></h1>
             <div>
                 <h1 className="text-2xl font-semibold mb-5">Cart</h1>

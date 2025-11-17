@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../../assets/images/xpoint-full-logo.png';
 import { useContext } from "react";
-
+import CustomButton from '../../../../Components/CustomButton/CustomButton';
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../../../../Providers/AuthProvider';
@@ -69,7 +69,7 @@ const DashboradNavbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to="/"><a className="btn">Home</a></Link>
+                    <Link to="/"><CustomButton text={'Home'}></CustomButton></Link>
                 </div>
             </div>
         </div>

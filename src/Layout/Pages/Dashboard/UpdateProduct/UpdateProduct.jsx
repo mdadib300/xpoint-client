@@ -46,14 +46,14 @@ const UpdateProduct = () => {
 
     return (
         <div>
-            <h1 className='text-2xl font-semibold mb-5'>Update Product</h1>
+            <h1 className='text-2xl font-semibold pb-5'>Update Product</h1>
             <div>
                 <form onSubmit={handleUpdateProduct}>
-                    <fieldset className="fieldset">
+                    <fieldset className="fieldset pb-10">
                         <label className="label">Give a unique Product Title</label>
-                        <input required type="text" className="input" name="name" defaultValue={product?.name} />
+                        <input required type="text" className="input bg-white border-gray-200" name="name" defaultValue={product?.name} />
                         <br />
-                        <select defaultValue="" className="select" name="category" defaultChecked={product?.category}>
+                        <select defaultValue="" className="select bg-white border-gray-200" name="category" defaultChecked={product?.category}>
                             <option disabled value="">Select Category</option>
                             <option>Denim Pants</option>
                             <option>Twill Pants</option>
@@ -70,14 +70,14 @@ const UpdateProduct = () => {
                         </select>
                         <br />
                         <label className="label">Set the Price</label>
-                        <input required type="number" className="input" name="price" defaultValue={product?.price} />
+                        <input required type="number" className="input bg-white border-gray-200" name="price" defaultValue={product?.price} />
                         <br />
                         <label className="label">Enter Sizes</label>
                         <input
                             type="text"
                             name="sizes"
                             placeholder="M, L, XL or 28, 30, 32"
-                            className="input input-bordered"
+                            className="input input-bordered bg-white border-gray-200"
                             defaultValue={product?.sizes}
                         />
                         <label className="label mt-5">Colors</label>
@@ -85,24 +85,24 @@ const UpdateProduct = () => {
                             type="text"
                             name="colors"
                             placeholder="Black, Blue, Purple"
-                            className="input input-bordered"
+                            className="input input-bordered bg-white border-gray-200"
                             defaultValue={product?.colors}
                         />
                         <br />
                         <label className="label">Add the Fit type</label>
-                        <input type="text" className="input" name="fit" defaultValue={product?.fit} />
+                        <input type="text" className="input bg-white border-gray-200" name="fit" defaultValue={product?.fit} />
                         <br />
                         <label className="label">Stock</label>
-                        <input type="number" className="input" name="stock" defaultValue={product?.stock} />
+                        <input type="number" className="input bg-white border-gray-200" name="stock" defaultValue={product?.stock} />
                         <br />
                         <label className="label">Product Image URL 1</label>
-                        <input required type="text" className="input" name="image1" defaultValue={product?.image1} />
+                        <input required type="text" className="input bg-white border-gray-200" name="image1" defaultValue={product?.image1} />
                         <br />
                         <label className="label">Product Image URL 2</label>
-                        <input type="text" className="input" name="image2" defaultValue={product?.image2} />
+                        <input type="text" className="input bg-white border-gray-200" name="image2" defaultValue={product?.image2} />
                         <br />
                         <label className="label">Product Image URL 3</label>
-                        <input type="text" className="input" name="image3" defaultValue={product?.image3} />
+                        <input type="text" className="input bg-white border-gray-200" name="image3" defaultValue={product?.image3} />
                         <br />
                         <input className="btn btn-wide btn-neutral btn-outline" type="submit" value="Update" />
                     </fieldset>

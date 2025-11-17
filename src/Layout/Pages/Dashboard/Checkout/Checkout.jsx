@@ -79,9 +79,9 @@ const Checkout = () => {
     };
 
     return (
-        <div>
+        <div className="min-h-screen">
             <h1 className="text-2xl font-semibold mb-2">Checkout</h1>
-            <div role="alert" className="alert mb-5">
+            <div role="alert" className="alert mb-5 bg-white text-black">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-neutral h-6 w-6 shrink-0">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
@@ -91,13 +91,13 @@ const Checkout = () => {
                 <form onSubmit={handlePlaceOrder}>
                     <fieldset className="fieldset">
                         <label className="label">Your Full Name</label>
-                        <input required type="text" className="input" placeholder="Full Name" name="name" />
+                        <input required type="text" className="input bg-white border-gray-200" placeholder="Full Name" name="name" />
                         <label className="label">Your Phone Number</label>
-                        <input required type="text" className="input" placeholder="Phone Number" name="phoneNumber" />
+                        <input required type="text" className="input bg-white border-gray-200" placeholder="Phone Number" name="phoneNumber" />
                         <label className="label">Your Full address</label>
-                        <input required type="text" className="input" placeholder="Address" name="address" />
+                        <input required type="text" className="input bg-white border-gray-200" placeholder="Address" name="address" />
                         <label className="label">Delivery Location</label>
-                        <select required defaultValue="" className="select" name="deliveryLocation" onChange={handleDeliveryLocation}>
+                        <select required defaultValue="" className="select bg-white border-gray-200" name="deliveryLocation" onChange={handleDeliveryLocation}>
                             <option disabled value="">Select Delivery Location</option>
                             <option>Inside Dhaka</option>
                             <option>Outside Dhaka</option>
@@ -105,7 +105,7 @@ const Checkout = () => {
                         <p className="font-bold mt-2">
                             Amount To Pay: {totalPrice} BDT + {deliveryCharge} (Delivery Charge) = {finalPrice} BDT
                         </p>
-                        <select required defaultValue="" className="select" name="paymentMethod" onChange={handlePaymentMethod}>
+                        <select required defaultValue="" className="select bg-white border-gray-200" name="paymentMethod" onChange={handlePaymentMethod}>
                             <option disabled value="">Select Payment Method</option>
                             <option>Cash On Delivery</option>
                             {/* <option>Online Payment</option> */}

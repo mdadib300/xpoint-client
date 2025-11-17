@@ -33,7 +33,7 @@ const ManageProducts = () => {
         });
     }
     return (
-        <div>
+        <div className="min-h-screen">
             <h1 className='text-2xl font-semibold mb-5'>Manage Products</h1>
             <div>
                 <div className="overflow-x-auto">
