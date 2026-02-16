@@ -1,9 +1,22 @@
+import ScrollToTop from "../../../Components/ScrollToTop";
 import Title from "../../../Components/Title/Title";
+import Marquee from "react-fast-marquee";
 
 
 const Return = () => {
     return (
         <div className="px-3 md:px-7 bg-white text-black">
+            <ScrollToTop></ScrollToTop>
+            {/* Announcements */}
+            <div className="bg-neutral-800 text-white my-2 rounded-md">
+                <p className="text-center py-3">
+                    <Marquee
+                        pauseOnHover={true}
+                    >
+                        <p><b>📢 Announcement:</b> Sometimes our return and exchange service is unavailable due to rapid-sales and stock-shortages. <i>(Especially during Eid)</i></p>
+                    </Marquee>
+                </p>
+            </div>
             <Title heading={'Return & Exchange'} subheading={'Our Return & Exchange Policies'}></Title>
             <p className="pb-5">At XPoint, we value our customers and aim to provide the best shopping experience. However, we understand that sometimes a purchase may not turn out as expected. That’s why we offer a straightforward and customer-friendly return and exchange policy to ensure your satisfaction. <br /> <br />
 

@@ -7,7 +7,7 @@ const NewArrival = () => {
     const latestProducts = [...products].reverse().slice(0, 8);
     return (
         <div className='bg-white text-black'>
-            <Title heading={'Shop The Latest'} subheading={'Here are our new arrivals!'}></Title>
+            <Title heading={'Shop The Latest'} subheading={'Check out our new arrivals!'}></Title>
             <div className="flex justify-center pb-10 md:pb-20">
                 <div className="
                 grid  [@media(max-width:860px)]:grid-cols-2 [@media(max-width:1365px)]:grid-cols-3 lg:grid-cols-4 
@@ -23,15 +23,22 @@ const NewArrival = () => {
                             </figure>
                             <Link to={`/details/${product._id}`}>
                                 <div className="card-body hover:underline">
-                                    <p className='font-semibold uppercase'>{product.name}</p>
+                                    <div className='flex justify-between'>
+                                        <div>
+                                            <p className='font-semibold uppercase'>{product.name}</p>
+                                        </div>
+                                        <div>
+                                            <p>{product.price} BDT</p>
+                                        </div>
+                                    </div>
                                     <p>{product.category}</p>
-                                    <p>{product.price} BDT</p>
                                 </div>
                             </Link>
                         </div>)
                     }
                 </div>
             </div>
+
 
             {/* Three, two and one card(s) */}
             {/* <div className='flex justify-center'>

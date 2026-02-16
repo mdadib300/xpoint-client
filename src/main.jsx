@@ -44,6 +44,9 @@ import Profile from './Layout/Pages/Dashboard/Profile/Profile.jsx'
 import AllOrders from './Layout/Pages/Dashboard/AllOrders/AllOrders.jsx'
 import Checkout from './Layout/Pages/Dashboard/Checkout/Checkout.jsx'
 import Orders from './Layout/Pages/Dashboard/Orders/Orders.jsx'
+import Customers from './Layout/Pages/Customers/Customers.jsx'
+import NotFound from './Layout/Pages/NotFound/NotFound.jsx'
+import FAQ from './Layout/Pages/FAQ/FAQ.jsx'
 
 const queryClient = new QueryClient()
 
@@ -55,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+        path: '/*',
+        element: <NotFound></NotFound>
       },
       {
         path: '/login',
@@ -69,8 +76,16 @@ const router = createBrowserRouter([
         element: <AboutUs></AboutUs>
       },
       {
+        path: '/faq',
+        element: <FAQ></FAQ>
+      },
+      {
         path: '/return',
         element: <Return></Return>
+      },
+      {
+        path: '/customers',
+        element: <Customers></Customers>
       },
       {
         path: '/details/:id',

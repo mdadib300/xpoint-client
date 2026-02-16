@@ -1,9 +1,11 @@
+import ScrollToTop from "../../../Components/ScrollToTop";
 import Title from "../../../Components/Title/Title";
 
 
 const AboutUs = () => {
     return (
         <div className="px-3 md:px-7 bg-white text-black">
+            <ScrollToTop></ScrollToTop>
             <Title heading={'About Us'} subheading={'About us and Contact info.'}></Title>
             <h3 className="text-xl md:text-2xl font-semibold my-3">Welcome to XPoint – Redefining Men’s Fashion in Bangladesh</h3>
             <p>At XPoint, we are more than just a clothing brand — we are a destination for men who appreciate quality, elegance, and individuality. Founded in Keraniganj, Dhaka, XPoint was born out of a passion for redefining what modern menswear can be: stylish yet comfortable, premium yet accessible.</p>
@@ -21,8 +23,7 @@ const AboutUs = () => {
             <div className="text-center pb-7">
                 <p className="mb-2"><b>Email Address: </b>info@xpointbd.com</p>
                 <p className="mb-2"><b>Phone Number: </b>+880 1797-430886</p>
-                <p className="mb-2"><b>New Location: </b>Minnat Plaza, Shop no.: 101, 102, 103, Abdullahpur Bazar, South Keraniganj, Dhaka - 1310</p>
-                <p className="mb-2">Old Location: Hazi Amir Hosen Plaza, Shop No.: 03, Abdullahpur Bazar, South Keraniganj, Dhaka -1310</p>
+                <p className="mb-2"><b>Location: </b>Minnat Plaza, Shop no.: 101, 102, 103, Abdullahpur Bazar, South Keraniganj, Dhaka - 1310</p>
             </div>
         </div>
     );

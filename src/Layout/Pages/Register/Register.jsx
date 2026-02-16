@@ -88,8 +88,8 @@ const Register = () => {
     }
 
     return (
-        <div className="hero py-5 lg:py-10">
-            <div className="hero-content flex-col lg:flex-row-reverse">
+        <div className="hero py-5 md:py-10 px-0 md:px-7">
+            <div className="hero-content flex-col md:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-semibold uppercase text-center">Register</h1>
                     <div className="py-10 w-full">
