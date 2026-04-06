@@ -15,23 +15,23 @@ const NewArrival = () => {
                 "
                 >
                     {
-                        latestProducts.map((product) => <div key={product._id} className="card [@media(max-width:340px)]:w-35 w-40 md:w-60 lg:w-70 shadow-md h-full rounded-sm">
-                            <figure>
-                                <div class="aspect-[4/5] w-80">
-                                    <img src={product.image1} class="w-full h-full object-cover" />
-                                </div>
-                            </figure>
+                        latestProducts.map((product) => <div key={product._id} className="card [@media(max-width:340px)]:w-35 w-40 md:w-60 lg:w-70 shadow-md h-full">
                             <Link to={`/details/${product._id}`}>
-                                <div className="card-body hover:underline">
-                                    <div className='flex justify-between'>
+                                <div className='transform transition duration-300 ease-out hover:-translate-y-1 rounded-sm'>
+                                    <figure>
+                                        <div class="aspect-[4/5] w-80">
+                                            <img src={product.image1} class="w-full h-full object-cover" />
+                                        </div>
+                                    </figure>
+                                    <div className="card-body">
                                         <div>
                                             <p className='font-semibold uppercase'>{product.name}</p>
                                         </div>
+                                        <p>{product.category}</p>
                                         <div>
                                             <p>{product.price} BDT</p>
                                         </div>
                                     </div>
-                                    <p>{product.category}</p>
                                 </div>
                             </Link>
                         </div>)

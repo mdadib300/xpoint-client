@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../../../../Providers/AuthProvider';
 import useAdmin from '../../../../Hooks/useAdmin';
+import { IoChevronBackCircleOutline } from "react-icons/io5";
 
 const DashboradNavbar = () => {
 
@@ -39,9 +40,9 @@ const DashboradNavbar = () => {
 
             </>
             : <>
-                <li><NavLink to="/dashboard/profile">Profile</NavLink></li>
                 <li><NavLink to="/dashboard/cart">Cart</NavLink></li>
                 <li><NavLink to="/dashboard/orders">Orders</NavLink></li>
+                <li><NavLink to="/dashboard/profile">Profile</NavLink></li>
                 <li><button onClick={handleLogOut}>Logout</button></li>
             </>
 
@@ -61,7 +62,7 @@ const DashboradNavbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <a className="ms-2 md:ms-5 w-30 md:w-40"><img src={logo} alt="" /></a>
+                    <div className="ms-2 md:ms-5 w-30 md:w-40"><Link to='/'><img src={logo} alt="" /></Link></div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -69,7 +70,11 @@ const DashboradNavbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to="/"><CustomButton text={'Home'}></CustomButton></Link>
+                    <Link to="/">
+                        <div className="avatar tooltip tooltip-left" data-tip="Go back to Home-page">
+                            <IoChevronBackCircleOutline className="text-3xl w-13" />
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>

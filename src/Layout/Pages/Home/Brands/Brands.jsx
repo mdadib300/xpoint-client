@@ -1,15 +1,15 @@
 import Marquee from "react-fast-marquee";
 
-import image1 from '../../../../assets/images/brands/Aeropostale-Logo.jpg';
+import image1 from '../../../../assets/images/brands/Aeropostale-Logo-compressed-compressed.jpg';
 import image2 from '../../../../assets/images/brands/american-eagle-outfitters.svg';
-import image3 from '../../../../assets/images/brands/calvin-klein-logo-png_seeklogo-311014.png';
-import image4 from '../../../../assets/images/brands/hm-h-and-m-logo-png_seeklogo-168429.png';
-import image5 from '../../../../assets/images/brands/hugo-boss-logo-png_seeklogo-207549.png';
-import image6 from '../../../../assets/images/brands/jack-and-jones-logo-png_seeklogo-389891.png';
-import image7 from '../../../../assets/images/brands/levis-brand-clothes-logo-symbol-design-fashion-illustration-free-vector.jpg';
-import image8 from '../../../../assets/images/brands/s-oliver-logo-black-and-white.png';
-import image9 from '../../../../assets/images/brands/tom-tailor-logo-png_seeklogo-427195.png';
-import image10 from '../../../../assets/images/brands/zara-logo-png_seeklogo-423532.png';
+import image3 from '../../../../assets/images/brands/calvin-klein-logo-png_seeklogo-311014-compressed.png';
+import image4 from '../../../../assets/images/brands/hm-h-and-m-logo-png_seeklogo-168429-compressed.png';
+import image5 from '../../../../assets/images/brands/hugo-boss-logo-png_seeklogo-207549-compressed.png';
+import image6 from '../../../../assets/images/brands/jack-and-jones-logo-png_seeklogo-389891-compressed.png';
+import image7 from '../../../../assets/images/brands/zara-logo-png_seeklogo-423532-compressed.png';
+import image8 from '../../../../assets/images/brands/tom-tailor-logo-png_seeklogo-427195-compressed.png';
+import image9 from '../../../../assets/images/brands/s-oliver-logo-black-and-white-compressed.png';
+import image10 from '../../../../assets/images/brands/levis-brand-clothes-logo-symbol-design-fashion-illustration-free-vector-compressed.jpg';
 
 const Brands = () => {
     return (

@@ -89,34 +89,34 @@ const Register = () => {
 
     return (
         <div className="hero py-5 md:py-10 px-0 md:px-7">
-            <div className="hero-content flex-col md:flex-row-reverse">
+            <div className="hero-content flex-col md:flex-row">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-semibold uppercase text-center">Register</h1>
-                    <div className="py-10 w-full">
+                    <div className="py-10 mx-auto w-1/2 md:w-full">
                         <img src={regImg} className="w-lg" />
                     </div>
                 </div>
-                <div className="card w-full max-w-sm shrink-0 shadow-2xl me-0 lg:me-20">
+                <div className="card w-full max-w-sm shrink-0 shadow-2xl ms-0 lg:ms-20">
                     <div className="card-body">
                         <SocialLogin></SocialLogin>
-                        <p className="text-center">---------- Or ----------</p>
+                        <div className="divider">Otherwise</div>
                         <fieldset className="fieldset">
                             <form onSubmit={handleRegister}>
                                 <label className="label">Enter Your Full Name</label>
-                                <input required type="text" className="input border-gray-200 bg-white" name="name" />
-                                <label className="label">Enter Your Email</label>
-                                <input required type="email" className="input border-gray-200 bg-white" name="email" />
-                                <label className="label">Create a Password</label>
-                                <input required type={showPassword ? "text" : "password"} className="input border-gray-200 bg-white" name="password" />
+                                <input required type="text" className="input border-gray-200 bg-white" placeholder="Example Name" name="name" />
+                                <label className="label mt-3">Enter Your Email</label>
+                                <input required type="email" className="input border-gray-200 bg-white" placeholder="example@email.com" name="email" />
+                                <label className="label mt-3">Create a Password</label>
+                                <input required type={showPassword ? "text" : "password"} className="input border-gray-200 bg-white" placeholder="$Tr0nG_Pa$$W0rD" name="password" />
                                 <button
                                     type="button"
-                                    className="absolute right-13 top-[66%] -translate-y-1/2"
+                                    className="absolute right-13 top-[70%] -translate-y-1/2"
                                     onClick={() => setShowPassword((prev) => !prev)}
                                 >
                                     {showPassword ? <img src={hide} className="w-4" /> : <img src={view} className="w-4" />}
                                 </button>
                                 <div className="mt-2"><p>Already have an account? <Link to='/login' className="link link-hover font-semibold">Login</Link></p></div>
-                                <input type="submit" value="Register" className="btn btn-neutral mt-4" />
+                                <input type="submit" value="Register" className="btn mt-4 w-full bg-white text-black border-[#e5e5e5]" />
                             </form>
                         </fieldset>
                     </div>

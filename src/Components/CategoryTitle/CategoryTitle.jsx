@@ -2,26 +2,26 @@ import { NavLink } from 'react-router-dom';
 import { Typewriter } from 'react-simple-typewriter'
 
 const CategoryTitle = ({ titleText }) => {
+
     const pantLinks = <>
-        <NavLink to='/denimpants'><li className='hover:underline'><a>DENIM - FULL</a></li></NavLink>
-        <NavLink to='/twillpants'><li className='hover:underline'><a>TWILL - FULL</a></li></NavLink>
-        <NavLink to='/shorts'><li className='hover:underline'><a>SHORTS</a></li></NavLink>
+        <NavLink to='/denimpants'><li className='hover:underline p-1'><a>Denim Pant</a></li></NavLink>
+        <NavLink to='/twillpants'><li className='hover:underline p-1'><a>Twill Pant</a></li></NavLink>
+        <NavLink to='/shorts'><li className='hover:underline p-1'><a>Shorts</a></li></NavLink>
     </>;
-    const shirtLinks = <>
-        <NavLink to='/fullshirts'><li className='hover:underline'><a>FULL SLEEVE</a></li></NavLink>
-        <NavLink to='/halfshirts'><li className='hover:underline'><a>HALF SLEEVE</a></li></NavLink>
-    </>;
-    const tShirtLinks = <>
-        <NavLink to='/polotshirts'><li className='hover:underline'><a>POLO</a></li></NavLink>
-        <NavLink to='/basictshirts'><li className='hover:underline'><a>BASIC</a></li></NavLink>
-        <NavLink to='/dropshoulders'><li className='hover:underline'><a>DROP-SHOULDER</a></li></NavLink>
+    const upperWear = <>
+        <NavLink to='/fullshirts'><li className='hover:underline p-1'><a>Full Sleeve Shirt</a></li></NavLink>
+        <NavLink to='/halfshirts'><li className='hover:underline p-1'><a>Half Sleeve Shirt</a></li></NavLink>
+        <NavLink to='/polotshirts'><li className='hover:underline p-1'><a>Polo Tee</a></li></NavLink>
+        <NavLink to='/basictshirts'><li className='hover:underline p-1'><a>Basic Tee</a></li></NavLink>
+        <NavLink to='/dropshoulders'><li className='hover:underline p-1'><a>Drop-Shoulder</a></li></NavLink>
     </>;
     const accessoriesLinks = <>
-        <NavLink to='/boxers'><li className='hover:underline'><a>BOXERS</a></li></NavLink>
-        <NavLink to='/belts'><li className='hover:underline'><a>BELTS</a></li></NavLink>
-        <NavLink to='/caps'><li className='hover:underline'><a>CAPS</a></li></NavLink>
-        <NavLink to='/wallets'><li className='hover:underline'><a>WALLETS</a></li></NavLink>
+        <NavLink to='/caps'><li className='hover:underline p-1'><a>Cap</a></li></NavLink>
+        <NavLink to='/belts'><li className='hover:underline p-1'><a>Belt</a></li></NavLink>
+        <NavLink to='/wallets'><li className='hover:underline p-1'><a>Wallet</a></li></NavLink>
+        <NavLink to='/boxers'><li className='hover:underline p-1'><a>Underwear</a></li></NavLink>
     </>;
+
     return (
         <div className='py-5 md:py-10 uppercase flex flex-col md:flex-row justify-between mx-5 md:mx-20'>
             <div className='text-2xl md:text-3xl text-center font-semibold md:font-bold mb-5 md:mb-0'>
@@ -45,19 +45,15 @@ const CategoryTitle = ({ titleText }) => {
                             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                         </form>
                         <div className='p-5'>
-                            <h3 className="font-bold">PANTS</h3>
+                            <h3 className="font-bold">Upper Fit</h3>
+                            <div>
+                                {upperWear}
+                            </div>
+                            <h3 className="font-bold">Lower Fit</h3>
                             <div>
                                 {pantLinks}
                             </div>
-                            <h3 className="font-bold">SHIRTS</h3>
-                            <div>
-                                {shirtLinks}
-                            </div>
-                            <h3 className="font-bold">T-SHIRTS</h3>
-                            <div>
-                                {tShirtLinks}
-                            </div>
-                            <h3 className="font-bold">ACCESSORIES</h3>
+                            <h3 className="font-bold">Accessories</h3>
                             <div>
                                 {accessoriesLinks}
                             </div>

@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import logImg from '../../../assets/images/auth/login.svg';
 import SocialLogin from "../../../Components/SocialLogin/SocialLogin";
+import hide from '../../../assets/images/icons/hide.png';
+import view from '../../../assets/images/icons/view.png';
 
 
 const Login = () => {
@@ -11,6 +13,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -72,26 +75,33 @@ const Login = () => {
 
     return (
         <div className="hero py-5 md:py-10 px-0 md:px-7">
-            <div className="hero-content flex-col md:flex-row-reverse">
+            <div className="hero-content flex-col md:flex-row">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-semibold uppercase text-center">Login</h1>
-                    <div className="py-10 w-full">
+                    <div className="py-10 mx-auto w-1/2 md:w-full">
                         <img src={logImg} className="w-lg" />
                     </div>
                 </div>
-                <div className="card w-full max-w-sm shrink-0 shadow-2xl me-0 lg:me-20">
+                <div className="card w-full max-w-sm shrink-0 shadow-2xl ms-0 lg:ms-20">
                     <div className="card-body">
                         <SocialLogin></SocialLogin>
-                        <p className="text-center">---------- Or ----------</p>
+                        <div className="divider">Otherwise</div>
                         <fieldset className="fieldset">
                             <form onSubmit={handleLogin}>
                                 <label className="label">Enter Your Email</label>
-                                <input required type="email" className="input bg-white border-gray-200" name="email" />
-                                <label className="label">Enter Your Password</label>
-                                <input required type="password" className="input bg-white border-gray-200" name="password" />
-                                <div className="mt-2"><p>Forget Password? <button onClick={handleForgotPassword} className="link link-hover font-semibold">Click here</button></p></div>
-                                <div className="mt-2"><p>Don't have an account? <Link to='/register' className="link link-hover font-semibold">Register</Link></p></div>
-                                <input type="submit" value="Login" className="btn btn-neutral mt-4" />
+                                <input required type="email" className="input bg-white border-gray-200" placeholder="example@email.com" name="email" />
+                                <label className="label mt-3">Enter Your Password</label>
+                                <input required type={showPassword ? "text" : "password"} className="input border-gray-200 bg-white" placeholder="$Tr0nG_Pa$$W0rD" name="password" />
+                                <button
+                                    type="button"
+                                    className="absolute right-13 top-[60%] -translate-y-1/2"
+                                    onClick={() => setShowPassword((prev) => !prev)}
+                                >
+                                    {showPassword ? <img src={hide} className="w-4" /> : <img src={view} className="w-4" />}
+                                </button>
+                                <div className="mt-1"><p>Forget Password? <button onClick={handleForgotPassword} className="link link-hover font-semibold">Click here</button></p></div>
+                                <div className="mt-5"><p>Don't have an account? <Link to='/register' className="link link-hover font-semibold">Register</Link></p></div>
+                                <input type="submit" value="Login" className="btn mt-2 w-full bg-white text-black border-[#e5e5e5]" />
                             </form>
                         </fieldset>
                     </div>

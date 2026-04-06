@@ -2,12 +2,13 @@ import { Link, NavLink } from "react-router-dom";
 import fullLogo from "../../../../assets/images/xpoint-full-logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../../../Providers/AuthProvider";
-import profilePic from '../../../../assets/images/icons/user.png';
 import Marquee from "react-fast-marquee";
 import CustomButton from "../../../../Components/CustomButton/CustomButton";
+import { FaCartShopping } from "react-icons/fa6";
 
 const Navbar = () => {
     const { user } = useContext(AuthContext);
+
     const pantLinks = <>
         <NavLink to='/denimpants'><li className='hover:underline p-1'><a>Denim Pant</a></li></NavLink>
         <NavLink to='/twillpants'><li className='hover:underline p-1'><a>Twill Pant</a></li></NavLink>
@@ -20,17 +21,13 @@ const Navbar = () => {
         <NavLink to='/basictshirts'><li className='hover:underline p-1'><a>Basic Tee</a></li></NavLink>
         <NavLink to='/dropshoulders'><li className='hover:underline p-1'><a>Drop-Shoulder</a></li></NavLink>
     </>;
-
-
     const accessoriesLinks = <>
         <NavLink to='/caps'><li className='hover:underline p-1'><a>Cap</a></li></NavLink>
         <NavLink to='/belts'><li className='hover:underline p-1'><a>Belt</a></li></NavLink>
         <NavLink to='/wallets'><li className='hover:underline p-1'><a>Wallet</a></li></NavLink>
         <NavLink to='/boxers'><li className='hover:underline p-1'><a>Underwear</a></li></NavLink>
-
-
-
     </>;
+
     const navbarLinks = <>
         {/* <li><NavLink to="/">Home</NavLink></li> */}
         {/* <li><NavLink to="/about">About & Contact</NavLink></li> */}
@@ -119,12 +116,11 @@ const Navbar = () => {
                     <div>
                         {
                             user?.email
-                                ? <Link to="/dashboard/profile">
+                                ? <Link to="/dashboard/cart">
                                     <div className="avatar tooltip tooltip-left" data-tip="Your Cart and Other Info.">
-                                        <div className="w-12 rounded-full">
-                                            <img src={profilePic} />
-                                        </div>
-                                    </div></Link>
+                                        <FaCartShopping className="text-xl md:text-2xl w-13" />
+                                    </div>
+                                </Link>
                                 : <div><NavLink to="/login"><CustomButton text="Login"></CustomButton>  </NavLink> </div>
                         }
                     </div>
