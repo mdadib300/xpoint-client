@@ -7,6 +7,7 @@ import useCart from "../../Hooks/useCart";
 import CategoryTitle from "../CategoryTitle/CategoryTitle";
 import { Carousel } from 'react-responsive-carousel';
 import ScrollToTop from "../ScrollToTop";
+import ZoomImage from "../ZoomImage/ZoomImage";
 
 
 const ProductDetails = () => {
@@ -14,7 +15,7 @@ const ProductDetails = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
-    const { _id, image1, image2, image3, name, category, price, fit, sizes, colors } = useLoaderData();
+    const { _id, image1, image2, image3, name, category, price, fit, sizes, colors, description } = useLoaderData();
     const [, refetch] = useCart()
 
     const handleCart = (e) => {
@@ -71,25 +72,29 @@ const ProductDetails = () => {
             <ScrollToTop></ScrollToTop>
             <CategoryTitle titleText={category}></CategoryTitle>
             <div className="hero pb-10">
-                <div className="hero-content flex-col lg:flex-row">
+                <div className="hero-content items-start gap-5 md:gap-10 flex-col lg:flex-row">
                     <div className="w-full">
                         <Carousel
-                            autoPlay={true}
-                            interval={5000}
-                            infiniteLoop={true}
-                            stopOnHover={false}
-                            showThumbs={false}
-                            showStatus={false}
+                            infiniteLoop
+                            showThumbs={true}
+                            showArrows={true}
+                            emulateTouch={true}
+                            swipeable={true}
+                            renderThumbs={() =>
+                                [image1, image2, image3].map((img, i) => (
+                                    <img key={i} src={img} alt={`thumb-${i}`} />
+                                ))
+                            }
 
                         >
                             <div >
-                                <img src={image1} alt="" />
+                                <ZoomImage src={image1}></ZoomImage>
                             </div>
                             <div >
-                                <img src={image2} alt="" />
+                                <ZoomImage src={image2}></ZoomImage>
                             </div>
                             <div >
-                                <img src={image3} alt="" />
+                                <ZoomImage src={image3}></ZoomImage>
                             </div>
 
                         </Carousel>
@@ -99,30 +104,31 @@ const ProductDetails = () => {
                         <div className="py-6">
                             <p className="text-xl mb-2"><b>Product Type:</b> {category}</p>
                             <p className="text-xl my-2"><b>Fit:</b> {fit}</p>
-                            <p className="text-xl my-2"><b>Sizes:</b> {sizes?.map(size => <p className="inline">{size} | </p>)}</p>
-                            <p className="text-xl my-2"><b>Colors:</b> {colors?.map(color => <p className="inline">{color} | </p>)}</p>
+                            <p className="text-xl my-2"><b>Sizes:</b> {sizes?.map(size => <span className="inline">{size} | </span>)}</p>
+                            <p className="text-xl my-2"><b>Colors:</b> {colors?.map(color => <span className="inline">{color} | </span>)}</p>
                             <p className="text-xl mt-2"><b>Price:</b> {price} BDT</p>
+                            <p className="mt-2"><b>Product Description:</b> {description}</p>
                         </div>
                         <div>
                             <form onSubmit={handleCart}>
                                 <fieldset className="fieldset">
                                     <label className="label">Size</label>
-                                    <select defaultValue="" className="select bg-white" name="size">
+                                    <select defaultValue="" className="select bg-white w-full md:w-1/2" name="size">
                                         <option disabled value="">Select Size (If applicable)</option>
                                         {
                                             sizes?.map(size => <option>{size}</option>)
                                         }
                                     </select>
                                     <label className="label">Select the color</label>
-                                    <select defaultValue="" className="select bg-white" name="color">
+                                    <select defaultValue="" className="select bg-white w-full md:w-1/2" name="color">
                                         <option disabled value="">Select Color (If applicable)</option>
                                         {
                                             colors?.map(color => <option>{color}</option>)
                                         }
                                     </select>
                                     <label className="label">Quantity</label>
-                                    <input required defaultValue={1} type="number" className="input bg-white" name="quantity" />
-                                    <input type="submit" value="Add to Cart" className="btn btn-neutral btn-outline btn-wide mt-4" />
+                                    <input required defaultValue={1} type="number" className="input bg-white w-full md:w-1/2" name="quantity" />
+                                    <input type="submit" value="Add to Cart" className="btn btn-neutral w-full md:w-1/2 mt-4" />
                                 </fieldset>
                             </form>
                         </div>

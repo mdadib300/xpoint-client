@@ -9,18 +9,7 @@ import Root from './Layout/Root/Root.jsx'
 import AboutUs from './Layout/Pages/AboutUs/AboutUs.jsx'
 import Return from './Layout/Pages/Return/Return.jsx'
 import Home from './Layout/Pages/Home/Home.jsx'
-import DenimPants from './Layout/Pages/Categories/DenimPants/DenimPants.jsx'
-import TwillPants from './Layout/Pages/Categories/TwillPants/TwillPants.jsx'
-import Shorts from './Layout/Pages/Categories/Shorts/Shorts.jsx'
-import FullShirts from './Layout/Pages/Categories/FullShirts/FullShirts.jsx'
-import HalfShirts from './Layout/Pages/Categories/HalfShirts/HalfShirts.jsx'
-import PoloTShirts from './Layout/Pages/Categories/PoloTShirts/PoloTShirts.jsx'
-import BasicTShirts from './Layout/Pages/Categories/BasicTShirts/BasicTShirts.jsx'
-import DropShoulders from './Layout/Pages/Categories/DropShoulders/DropShoulders.jsx'
-import Boxers from './Layout/Pages/Categories/Boxers/Boxers.jsx'
-import Belts from './Layout/Pages/Categories/Belts/Belts.jsx'
-import Wallets from './Layout/Pages/Categories/Wallets/Wallets.jsx'
-import Caps from './Layout/Pages/Categories/Caps/Caps.jsx'
+import CategoryPage from './Layout/Pages/Home/Categories/CategoryPage/CategoryPage.jsx'
 import Login from './Layout/Pages/Login/Login.jsx'
 import Register from './Layout/Pages/Register/Register.jsx'
 import AuthProvider from './Providers/AuthProvider.jsx'
@@ -93,52 +82,8 @@ const router = createBrowserRouter([
         loader: ({ params }) => fetch(`https://xpoint-server.vercel.app/products/${params.id}`)
       },
       {
-        path: '/denimpants',
-        element: <DenimPants></DenimPants>
-      },
-      {
-        path: '/twillpants',
-        element: <TwillPants></TwillPants>
-      },
-      {
-        path: '/shorts',
-        element: <Shorts></Shorts>
-      },
-      {
-        path: '/fullshirts',
-        element: <FullShirts></FullShirts>
-      },
-      {
-        path: '/halfshirts',
-        element: <HalfShirts></HalfShirts>
-      },
-      {
-        path: '/polotshirts',
-        element: <PoloTShirts></PoloTShirts>
-      },
-      {
-        path: '/basictshirts',
-        element: <BasicTShirts></BasicTShirts>
-      },
-      {
-        path: '/dropshoulders',
-        element: <DropShoulders></DropShoulders>
-      },
-      {
-        path: '/boxers',
-        element: <Boxers></Boxers>
-      },
-      {
-        path: '/belts',
-        element: <Belts></Belts>
-      },
-      {
-        path: '/wallets',
-        element: <Wallets></Wallets>
-      },
-      {
-        path: '/caps',
-        element: <Caps></Caps>
+        path: '/:categoryName',
+        element: <CategoryPage></CategoryPage>
       }
     ]
   },

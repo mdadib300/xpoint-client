@@ -81,11 +81,17 @@ const Checkout = () => {
     return (
         <div className="min-h-screen">
             <h1 className="text-2xl font-semibold mb-2">Checkout</h1>
+            <div role="alert" className="alert mb-2 bg-white text-black">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-neutral h-6 w-6 shrink-0">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>We have already your Email as you logged in to our website, now fill the form below accurately. Your order will be confirmed or cancelled by our Web Team. We cancel orders mainly due to product's size or color availability or if you don't fill this form properly. And, if necessary, double-check that all your selected products have been added to the cart.</span>
+            </div>
             <div role="alert" className="alert mb-5 bg-white text-black">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-neutral h-6 w-6 shrink-0">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <span>We have already your Email as you logged in to our website, now fill the form below accurately. Your order will be confirmed or cancelled by our Web Team. We cancel orders mainly due to product's size or color availability or if you don't fill this form properly.</span>
+                <span>আপনি আমাদের ওয়েবসাইটে লগ-ইন করার কারণে আপনার ইমেল এড্রেস আমাদের কাছে আছে, এখন নিচের ফর্মটি সঠিকভাবে ফিল-আপ করুন। আপনার অর্ডারটি আমাদের ওয়েব টিম দ্বারা কন্ফার্ম বা ক্যান্সেল করা হবে। আমরা প্রধানত প্রোডাক্টের সাইজ বা কালারের প্রাপ্যতার অভাবে অথবা আপনি এই ফর্মটি সঠিকভাবে পূরণ না করলে অর্ডার ক্যান্সেল করে থাকি। এবং, আপনার সকল সিলেক্টেড প্রোডাক্ট কার্টে অ্যাড হয়েছে কিনা প্রয়োজনে আবার যাচাই করুন।</span>
             </div>
             <div>
                 <form onSubmit={handlePlaceOrder}>
