@@ -61,9 +61,9 @@ const UpdateProduct = () => {
                             <option>Full Sleeve Shirts</option>
                             <option>Half Sleeve Shirts</option>
                             <option>Polo T-shirts</option>
-                            <option>Basic T-shirt</option>
+                            <option>Basic T-shirts</option>
                             <option>Drop-shoulder</option>
-                            <option>Boxers</option>
+                            <option>Underwears</option>
                             <option>Belts</option>
                             <option>Caps</option>
                             <option>Wallets</option>

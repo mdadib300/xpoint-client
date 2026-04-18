@@ -52,7 +52,7 @@ const Orders = () => {
                                                     </div>
                                                 </div> */}
                                                 <div>
-                                                    <div className="font-bold">Order Status: {order.status}</div>
+                                                    <div className="badge badge-outline badge-neutral mb-1">{order.status}</div>
                                                     {
                                                         order.cartItems.map(cartItem => <div className="text-sm opacity-50">
                                                             <p>Product: {cartItem.productName}</p>
@@ -68,7 +68,7 @@ const Orders = () => {
                                         </td>
                                         <td>Total Amount: {order.amount} BDT</td>
                                         <th>
-                                            <button onClick={() => handleCancel(order._id)} className="btn btn-ghost btn-xs" disabled={order.status !== 'pending'}>Cancel Order</button>
+                                            <button onClick={() => handleCancel(order._id)} className="btn btn-outline btn-sm" disabled={order.status !== 'Pending'}>Cancel Order</button>
                                         </th>
                                     </tr>)
                             }

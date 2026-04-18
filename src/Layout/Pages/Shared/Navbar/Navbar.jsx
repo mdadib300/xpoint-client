@@ -10,22 +10,22 @@ const Navbar = () => {
     const { user } = useContext(AuthContext);
 
     const pantLinks = <>
-        <NavLink to='/denimpants'><li className='hover:underline p-1'><a>Denim Pant</a></li></NavLink>
-        <NavLink to='/twillpants'><li className='hover:underline p-1'><a>Twill Pant</a></li></NavLink>
-        <NavLink to='/shorts'><li className='hover:underline p-1'><a>Shorts</a></li></NavLink>
+        <NavLink to='category/denim-pants'><li className='hover:underline p-1'><a>Denim Pants</a></li></NavLink>
+        <NavLink to='category/twill-pants'><li className='hover:underline p-1'><a>Twill Pants</a></li></NavLink>
+        <NavLink to='category/shorts'><li className='hover:underline p-1'><a>Shorts</a></li></NavLink>
     </>;
     const upperWear = <>
-        <NavLink to='/fullshirts'><li className='hover:underline p-1'><a>Full Sleeve Shirt</a></li></NavLink>
-        <NavLink to='/halfshirts'><li className='hover:underline p-1'><a>Half Sleeve Shirt</a></li></NavLink>
-        <NavLink to='/polotshirts'><li className='hover:underline p-1'><a>Polo Tee</a></li></NavLink>
-        <NavLink to='/basictshirts'><li className='hover:underline p-1'><a>Basic Tee</a></li></NavLink>
-        <NavLink to='/dropshoulders'><li className='hover:underline p-1'><a>Drop-Shoulder</a></li></NavLink>
+        <NavLink to='category/full-sleeve-shirts'><li className='hover:underline p-1'><a>Full Sleeve Shirts</a></li></NavLink>
+        <NavLink to='category/half-sleeve-shirts'><li className='hover:underline p-1'><a>Half Sleeve Shirts</a></li></NavLink>
+        <NavLink to='category/polo-t-shirts'><li className='hover:underline p-1'><a>Polo T-shirts</a></li></NavLink>
+        <NavLink to='category/basic-t-shirts'><li className='hover:underline p-1'><a>Basic T-shirts</a></li></NavLink>
+        <NavLink to='category/drop-shoulder'><li className='hover:underline p-1'><a>Drop-Shoulder</a></li></NavLink>
     </>;
     const accessoriesLinks = <>
-        <NavLink to='/caps'><li className='hover:underline p-1'><a>Cap</a></li></NavLink>
-        <NavLink to='/belts'><li className='hover:underline p-1'><a>Belt</a></li></NavLink>
-        <NavLink to='/wallets'><li className='hover:underline p-1'><a>Wallet</a></li></NavLink>
-        <NavLink to='/boxers'><li className='hover:underline p-1'><a>Underwear</a></li></NavLink>
+        <NavLink to='category/caps'><li className='hover:underline p-1'><a>Caps</a></li></NavLink>
+        <NavLink to='category/belts'><li className='hover:underline p-1'><a>Belts</a></li></NavLink>
+        <NavLink to='category/wallets'><li className='hover:underline p-1'><a>Wallets</a></li></NavLink>
+        <NavLink to='category/underwears'><li className='hover:underline p-1'><a>Underwears</a></li></NavLink>
     </>;
 
     const navbarLinks = <>

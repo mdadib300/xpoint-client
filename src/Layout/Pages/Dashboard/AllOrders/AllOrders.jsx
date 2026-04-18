@@ -86,14 +86,14 @@ const AllOrders = () => {
                                             <button
                                                 className="btn btn-success me-5"
                                                 onClick={() => handleStatusChange(order._id, "Confirmed")}
-                                                disabled={order.status !== "pending"}
+                                                disabled={order.status !== "Pending"}
                                             >
                                                 Confirm
                                             </button>
                                             <button
                                                 className="btn btn-error me-5"
                                                 onClick={() => handleStatusChange(order._id, "Canceled")}
-                                                disabled={order.status !== "pending"}
+                                                disabled={order.status !== "Pending"}
                                             >
                                                 Cancel
                                             </button>

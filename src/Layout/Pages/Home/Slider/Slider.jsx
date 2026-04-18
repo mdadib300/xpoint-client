@@ -65,7 +65,7 @@ const Slider = () => {
                 showArrows={false}
                 showIndicators={false}
             >
-                <Link to='/denimpants'>
+                <Link to='category/denim-pants'>
                     <div
                         className="hero w-8/9 mx-auto max-h-14/15 aspect-[2/1] bg-cover bg-center"
                         style={{
@@ -74,7 +74,7 @@ const Slider = () => {
                     >
                     </div>
                 </Link>
-                <Link to='/halfshirts'>
+                <Link to='/'>
                     <div
                         className="hero w-8/9 mx-auto max-h-14/15 aspect-[2/1] bg-cover bg-center"
                         style={{
@@ -83,7 +83,7 @@ const Slider = () => {
                     >
                     </div></Link>
 
-                <Link to='/denimpants'>
+                <Link to='/category/denim-pants'>
                     <div
                         className="hero w-8/9 mx-auto max-h-14/15 aspect-[2/1] bg-cover bg-center"
                         style={{

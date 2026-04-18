@@ -11,7 +11,7 @@ const ZoomImage = ({ src }) => {
 
         setZoomStyle({
             transformOrigin: `${x}% ${y}%`,
-            transform: "scale(2)", // zoom level
+            transform: "scale(3)",
         });
     };
 
@@ -30,7 +30,7 @@ const ZoomImage = ({ src }) => {
         >
             <img
                 src={src}
-                alt=""
+                alt="Product Image"
                 className="w-full h-full object-cover transition-transform duration-200 ease-out"
                 style={zoomStyle}
             />

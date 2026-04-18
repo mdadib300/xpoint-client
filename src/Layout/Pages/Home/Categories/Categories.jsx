@@ -14,19 +14,23 @@ import twill from '../../../../assets/images/categories/twill.jpg';
 import wallet from '../../../../assets/images/categories/wallet.jpg';
 import { Link } from 'react-router-dom';
 
+const createSlug = (text) => {
+    return text.toLowerCase().replace(/\s+/g, "-");
+};
+
 const categoryData = [
-    { name: "Denim Pants", image: denim },
-    { name: "Twill Pants", image: twill },
-    { name: "Shorts", image: shorts },
-    { name: "Full Sleeve Shirts", image: fullshirt },
-    { name: "Half Sleeve Shirts", image: halfshirt },
-    { name: "Basic T-Shirt", image: tee },
-    { name: "Drop-shoulder", image: droptee },
-    { name: "Polo T-Shirts", image: polo },
-    { name: "Caps", image: caps },
-    { name: "Belts", image: belt },
-    { name: "Wallets", image: wallet },
-    { name: "Boxers", image: boxer },
+    { name: "Denim Pants", slug: "denim-pants", image: denim },
+    { name: "Twill Pants", slug: "twill-pants", image: twill },
+    { name: "Shorts", slug: "shorts", image: shorts },
+    { name: "Full Sleeve Shirts", slug: "full-sleeve-shirts", image: fullshirt },
+    { name: "Half Sleeve Shirts", slug: "half-sleeve-shirts", image: halfshirt },
+    { name: "Basic T-Shirts", slug: "basic-tshirts", image: tee },
+    { name: "Drop-shoulder", slug: "drop-shoulder", image: droptee },
+    { name: "Polo T-Shirts", slug: "polo-tshirts", image: polo },
+    { name: "Caps", slug: "caps", image: caps },
+    { name: "Belts", slug: "belts", image: belt },
+    { name: "Wallets", slug: "wallets", image: wallet },
+    { name: "Underwears", slug: "underwears", image: boxer },
 ];
 
 const Categories = () => {
@@ -40,7 +44,7 @@ const Categories = () => {
                     {categoryData.map((cat) => (
                         <Link
                             key={cat.name}
-                            to={`/${encodeURIComponent(cat.name)}`}
+                            to={`/category/${createSlug(cat.name)}`}
                         >
                             <TiltedCard
                                 imageSrc={cat.image}
