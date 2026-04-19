@@ -31,7 +31,7 @@ const DashboradNavbar = () => {
     const links = <>{
         isAdmin ?
             <>
-                <li><NavLink to="/dashboard/profile">Home</NavLink></li>
+                <li><NavLink to="/dashboard/profile">Profile</NavLink></li>
                 <li><NavLink to="/dashboard/addProduct">Add Product</NavLink></li>
                 <li><NavLink to="/dashboard/manageProducts">Manage Products</NavLink></li>
                 <li><NavLink to="/dashboard/allOrders">Orders</NavLink></li>

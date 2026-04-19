@@ -63,14 +63,13 @@ const Cart = () => {
                                             <td>
                                                 <div className="flex items-center gap-3">
                                                     <div className="avatar">
-                                                        <div className="mask mask-squircle h-12 w-12">
+                                                        <div className="h-16 w-16">
                                                             <img
-                                                                src={cartProduct.image1} />
+                                                                src={cartProduct.image} />
                                                         </div>
                                                     </div>
                                                     <div>
                                                         <div className="font-bold">{cartProduct.productName}</div>
-                                                        <div className="text-sm opacity-50">{cartProduct.category}</div>
                                                         <div className="text-sm opacity-50">Size: {cartProduct.size}</div>
                                                         <div className="text-sm opacity-50">Color: {cartProduct.color}</div>
                                                         <div className="text-sm opacity-50">Qty: {cartProduct.quantity}</div>

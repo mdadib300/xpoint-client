@@ -15,23 +15,22 @@ const ProductDetails = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
-    const { _id, image1, image2, image3, name, category, price, fit, sizes, colors, description } = useLoaderData();
+    const { _id, images, name, category, price, discountPrice, fit, sizes, colors, description } = useLoaderData();
     const [, refetch] = useCart()
 
     const handleCart = (e) => {
         if (user && user.email) {
             e.preventDefault();
             const quantity = e.target.quantity.value;
-            const finalPrice = price * quantity;
+            const unitPrice = discountPrice || price;
+            const finalPrice = unitPrice * quantity;
             const cartData = {
                 productId: _id,
                 productName: name,
                 quantity: quantity,
                 price: finalPrice,
                 email: user.email,
-                image1: image1,
-                image2: image2,
-                image3: image3,
+                image: images[0],
                 category: category,
                 size: e.target.size.value,
                 color: e.target.color.value,
@@ -41,7 +40,7 @@ const ProductDetails = () => {
                     console.log(res.data);
                     if (res.data.insertedId) {
                         Swal.fire({
-                            title: `${name} added to your cart`,
+                            title: `${name} added to your cart, checkout by clicking cart icon at the top-right corner of the website`,
                             confirmButtonText: "Okay",
                             customClass: {
                                 confirmButton: 'bg-neutral-900 hover:bg-neutral-800 text-white px-4 py-2 rounded'
@@ -81,20 +80,20 @@ const ProductDetails = () => {
                             emulateTouch={true}
                             swipeable={true}
                             renderThumbs={() =>
-                                [image1, image2, image3].map((img, i) => (
+                                images.map((img, i) => (
                                     <img key={i} src={img} alt={`thumb-${i}`} />
                                 ))
                             }
 
                         >
                             <div >
-                                <ZoomImage src={image1}></ZoomImage>
+                                <ZoomImage src={images[0]}></ZoomImage>
                             </div>
                             <div >
-                                <ZoomImage src={image2}></ZoomImage>
+                                <ZoomImage src={images[1]}></ZoomImage>
                             </div>
                             <div >
-                                <ZoomImage src={image3}></ZoomImage>
+                                <ZoomImage src={images[2]}></ZoomImage>
                             </div>
 
                         </Carousel>
@@ -103,11 +102,25 @@ const ProductDetails = () => {
                         <h1 className="text-3xl font-bold">{name}</h1>
                         <div className="py-6">
                             <p className="text-xl mb-2"><b>Product Type:</b> {category}</p>
-                            <p className="text-xl my-2"><b>Fit:</b> {fit}</p>
+                            <p className="text-xl my-2"><b>Fit:</b> {fit || "Regular"}</p>
                             <p className="text-xl my-2"><b>Sizes:</b> {sizes?.map(size => <span className="inline">{size} | </span>)}</p>
                             <p className="text-xl my-2"><b>Colors:</b> {colors?.map(color => <span className="inline">{color} | </span>)}</p>
-                            <p className="text-xl mt-2"><b>Price:</b> {price} BDT</p>
-                            <p className="mt-2"><b>Product Description:</b> {description}</p>
+                            <div className="text-xl mt-2">
+                                <b>Price:</b>{" "}
+                                {discountPrice ? (
+                                    <span>
+                                        <span className="line-through text-gray-400 mr-2">
+                                            {price} BDT
+                                        </span>
+                                        <span>
+                                            {discountPrice} BDT
+                                        </span>
+                                    </span>
+                                ) : (
+                                    <span>{price} BDT</span>
+                                )}
+                            </div>
+                            <p className="mt-2"><b>Product Description:</b> {description || "Description Unavailable."}</p>
                         </div>
                         <div>
                             <form onSubmit={handleCart}>

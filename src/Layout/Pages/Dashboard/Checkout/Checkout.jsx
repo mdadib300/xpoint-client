@@ -3,7 +3,7 @@ import useCart from "../../../../Hooks/useCart";
 import { AuthContext } from "../../../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const Checkout = () => {

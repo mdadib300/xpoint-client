@@ -7,6 +7,7 @@ import {
 import './index.css'
 import Root from './Layout/Root/Root.jsx'
 import AboutUs from './Layout/Pages/AboutUs/AboutUs.jsx'
+import Contact from './Layout/Pages/Contact/Contact.jsx'
 import Return from './Layout/Pages/Return/Return.jsx'
 import Home from './Layout/Pages/Home/Home.jsx'
 import CategoryPage from './Layout/Pages/Home/Categories/CategoryPage/CategoryPage.jsx'
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: <AboutUs></AboutUs>
+      },
+      {
+        path: '/contact',
+        element: <Contact></Contact>
       },
       {
         path: '/faq',

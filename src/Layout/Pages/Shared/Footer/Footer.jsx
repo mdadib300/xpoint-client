@@ -12,7 +12,7 @@ const Footer = () => {
                     <h6 className="footer-title">Info.</h6>
                     <a className="link link-hover"><Link to='/about'>About</Link></a>
                     <a className="link link-hover"><Link to='/return'>Policy</Link></a>
-                    <a className="link link-hover"><Link to='/about'>Contact</Link></a>
+                    <a className="link link-hover"><Link to='/contact'>Contact</Link></a>
                     <a className="link link-hover"><Link to='/faq'>FAQ</Link></a>
                     <a className="link link-hover" href='https://maps.app.goo.gl/87YXVKpANqN9wmx59' target='_blank'>Our Location</a>
                 </nav>

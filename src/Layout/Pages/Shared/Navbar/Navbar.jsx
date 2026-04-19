@@ -5,9 +5,12 @@ import { AuthContext } from "../../../../Providers/AuthProvider";
 import Marquee from "react-fast-marquee";
 import CustomButton from "../../../../Components/CustomButton/CustomButton";
 import { FaCartShopping } from "react-icons/fa6";
+import useAdmin from "../../../../Hooks/useAdmin";
+import { MdAdminPanelSettings } from "react-icons/md";
 
 const Navbar = () => {
     const { user } = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
 
     const pantLinks = <>
         <NavLink to='category/denim-pants'><li className='hover:underline p-1'><a>Denim Pants</a></li></NavLink>
@@ -116,11 +119,21 @@ const Navbar = () => {
                     <div>
                         {
                             user?.email
-                                ? <Link to="/dashboard/cart">
-                                    <div className="avatar tooltip tooltip-left" data-tip="Your Cart and Other Info.">
-                                        <FaCartShopping className="text-xl md:text-2xl w-13" />
-                                    </div>
-                                </Link>
+                                ? <div>{
+                                    isAdmin ? 
+                                    <Link to="/dashboard/profile">
+                                        <div className="avatar tooltip tooltip-left" data-tip="Admin Dashboard">
+                                            <MdAdminPanelSettings className="text-xl md:text-3xl w-13" />
+                                        </div>
+                                    </Link>
+                                     :
+                                     <Link to="/dashboard/cart">
+                                        <div className="avatar tooltip tooltip-left" data-tip="Your Cart and Other Info.">
+                                            <FaCartShopping className="text-xl md:text-2xl w-13" />
+                                        </div>
+                                    </Link>
+                                    }
+                                </div>
                                 : <div><NavLink to="/login"><CustomButton text="Login"></CustomButton>  </NavLink> </div>
                         }
                     </div>
