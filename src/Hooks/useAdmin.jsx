@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const useAdmin = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
 
     const {
@@ -14,8 +14,8 @@ const useAdmin = () => {
         isError,
         error
     } = useQuery({
-        queryKey: [user?.email, 'isAdmin'],
-        enabled: !!user?.email, // ✅ prevents undefined API call
+        queryKey: ['isAdmin', user?.email],
+        enabled: !!user?.email && !loading, // prevents undefined API call
         queryFn: async () => {
             try {
                 const res = await axiosSecure.get(`/users/admin/${encodeURIComponent(user.email)}`);

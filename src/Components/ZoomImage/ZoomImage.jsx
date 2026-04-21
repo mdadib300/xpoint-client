@@ -30,7 +30,7 @@ const ZoomImage = ({ src }) => {
         >
             <img
                 src={src}
-                alt="Product Image"
+                alt="Product Image Unavailable"
                 className="w-full h-full object-cover transition-transform duration-200 ease-out"
                 style={zoomStyle}
             />

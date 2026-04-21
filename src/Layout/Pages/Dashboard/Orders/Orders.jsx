@@ -36,21 +36,25 @@ const Orders = () => {
     return (
         <div className="min-h-screen">
             <h1 className='text-2xl font-semibold mb-2'>Orders</h1>
+            {
+                orders.length > 0 && (
+                    <div role="alert" className="alert mb-2 bg-white text-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-neutral h-6 w-6 shrink-0">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>After we confirm your order, you need to pay 200 BDT in advance using Bkash Payment. Our Bkash number is attached with the email you receive after placing the order. After the advance payment, please send us the Bkash number you paid with in the reply of the email.</span>
+                    </div>
+                )
+            }
             <div>
                 <div className="overflow-x-auto">
                     <table className="table">
                         <tbody>
                             {
-                                orders.slice().reverse().map(order =>
+                                orders.slice().map(order =>
                                     <tr key={order._id}>
                                         <td>
                                             <div className="flex items-center gap-3">
-                                                {/* <div className="avatar">
-                                                    <div className="mask mask-squircle h-12 w-12">
-                                                        <img
-                                                            src={order.image} />
-                                                    </div>
-                                                </div> */}
                                                 <div>
                                                     <div className="badge badge-outline badge-neutral mb-1">{order.status}</div>
                                                     {
@@ -59,7 +63,8 @@ const Orders = () => {
                                                             <p>Size: {cartItem.size}</p>
                                                             <p>Color: {cartItem?.color}</p>
                                                             <p>Quantity: {cartItem.quantity}</p>
-                                                            <p>Price: {cartItem.price}</p>
+                                                            <p>Unit Price: {cartItem.price} BDT</p>
+                                                            <p>Total: {cartItem.price * cartItem.quantity} BDT</p>
                                                             <hr />
                                                         </div>)
                                                     }

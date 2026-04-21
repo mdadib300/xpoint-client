@@ -15,38 +15,53 @@ const Login = () => {
     const from = location.state?.from?.pathname || "/";
     const [showPassword, setShowPassword] = useState(false);
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        const user = { email, password };
-        console.log(user);
-        logInUser(email, password)
-            .then(result => {
-                console.log(result.user);
-                Swal.fire({
-                    title: "Login Successful",
-                    confirmButtonText: "Okay",
-                    customClass: {
-                        confirmButton: 'bg-neutral-900 hover:bg-neutral-800 text-white px-4 py-2 rounded'
-                    },
-                    buttonsStyling: false
-                });
-                navigate(from, { replace: true });
-            })
-            .catch((error) => {
-                console.log(error);
-                Swal.fire({
-                    title: "Wrong Email or Password!",
-                    confirmButtonText: "Okay",
-                    customClass: {
-                        confirmButton: 'bg-neutral-900 hover:bg-neutral-800 text-white px-4 py-2 rounded'
-                    },
-                    buttonsStyling: false
-                });
+
+        try {
+            const result = await logInUser(email, password);
+
+            // Wait for JWT to be saved
+            const userInfo = { email: result.user.email };
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/jwt`, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(userInfo)
             });
-    }
+
+            const data = await res.json();
+
+            if (data.token) {
+                localStorage.setItem("access-token", data.token);
+            }
+
+            Swal.fire({
+                title: "Login Successful",
+                confirmButtonText: "Okay",
+                customClass: {
+                    confirmButton: 'bg-neutral-900 hover:bg-neutral-800 text-white px-4 py-2 rounded'
+                },
+                buttonsStyling: false
+            });
+
+            navigate(from, { replace: true });
+
+        } catch (error) {
+            Swal.fire({
+                title: "Wrong Email or Password!",
+                confirmButtonText: "Okay",
+                customClass: {
+                    confirmButton: 'bg-neutral-900 hover:bg-neutral-800 text-white px-4 py-2 rounded'
+                },
+                buttonsStyling: false
+            });
+        }
+    };
 
     const handleForgotPassword = async () => {
         const { value: email } = await Swal.fire({

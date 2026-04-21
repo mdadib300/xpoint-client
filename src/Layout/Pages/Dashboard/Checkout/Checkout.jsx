@@ -4,6 +4,7 @@ import { AuthContext } from "../../../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { useNavigate } from "react-router-dom";
+import useUserProfile from "../../../../Hooks/useUserProfile";
 
 
 const Checkout = () => {
@@ -15,6 +16,7 @@ const Checkout = () => {
     const finalPrice = totalPrice + deliveryCharge;
     const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
+    const [profile, ,] = useUserProfile();
 
     const handlePlaceOrder = e => {
         e.preventDefault();
@@ -45,6 +47,7 @@ const Checkout = () => {
                             form.reset();
                             Swal.fire({
                                 title: "Order Placed",
+                                text: "Kindly check your email inbox, also spam folder.",
                                 confirmButtonColor: "#262626"
                             });
                             navigate('/dashboard/orders');
@@ -62,7 +65,7 @@ const Checkout = () => {
                 text: "Kindly check your order status from 'Orders' page within one day. Your order can be cancelled if the product(s) is out of stock or if you did not fill up checkout form correctly.",
                 confirmButtonColor: "#262626"
             });
-        } 
+        }
         // else if (selected === "Online Payment") {
         //     Swal.fire({
         //         title: "Important Alert!",
@@ -94,11 +97,11 @@ const Checkout = () => {
                 <form onSubmit={handlePlaceOrder}>
                     <fieldset className="fieldset">
                         <label className="label">Your Full Name</label>
-                        <input required type="text" className="input bg-white border-gray-200" placeholder="Full Name" name="name" />
+                        <input required defaultValue={profile?.name} type="text" className="input bg-white border-gray-200" placeholder="Full Name" name="name" />
                         <label className="label">Your Phone Number</label>
-                        <input required type="text" className="input bg-white border-gray-200" placeholder="Phone Number" name="phoneNumber" />
+                        <input required defaultValue={profile?.phone} type="text" className="input bg-white border-gray-200" placeholder="Phone Number" name="phoneNumber" />
                         <label className="label">Your Full address</label>
-                        <input required type="text" className="input bg-white border-gray-200" placeholder="Address" name="address" />
+                        <input required defaultValue={profile?.address} type="text" className="input bg-white border-gray-200" placeholder="Address" name="address" />
                         <label className="label">Delivery Location</label>
                         <select required defaultValue="" className="select bg-white border-gray-200" name="deliveryLocation" onChange={handleDeliveryLocation}>
                             <option disabled value="">Select Delivery Location</option>

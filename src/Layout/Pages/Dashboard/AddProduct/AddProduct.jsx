@@ -109,6 +109,8 @@ const AddProduct = () => {
                         <option disabled value="">Select Category</option>
                         <option>Denim Pants</option>
                         <option>Twill Pants</option>
+                        <option>Formal Pants</option>
+                        <option>Trousers</option>
                         <option>Shorts</option>
                         <option>Full Sleeve Shirts</option>
                         <option>Half Sleeve Shirts</option>

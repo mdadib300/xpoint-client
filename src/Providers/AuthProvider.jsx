@@ -45,26 +45,29 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+
             if (currentUser) {
-                // 
                 const userInfo = { email: currentUser.email };
+
                 axiosPublic.post('/jwt', userInfo)
                     .then(res => {
                         if (res.data.token) {
                             localStorage.setItem('access-token', res.data.token);
                         }
                     })
-            }
-            else {
-                // 
+                    .catch(err => {
+                        console.error("JWT Error:", err);
+                    });
+
+            } else {
                 localStorage.removeItem('access-token');
             }
+
             setLoading(false);
-        })
-        return () => {
-            return unsubscribe();
-        }
-    }, [axiosPublic])
+        });
+
+        return () => unsubscribe();
+    }, [axiosPublic]);
 
     const authInfo = { user, loading, createUser, logInUser, logInUserWithGoogle, logOutUser, updateUser, forgetPassEmail };
 

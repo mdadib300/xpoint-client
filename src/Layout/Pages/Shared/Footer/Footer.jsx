@@ -18,9 +18,9 @@ const Footer = () => {
                 </nav>
                 <nav>
                     <h6 className="footer-title">Company</h6>
-                    <a className="link link-hover"><Link to='/customers'>Customers' Gallery</Link></a>
-                    <a className="link link-hover"><Link to='/*'>Company Policy</Link></a>
                     <a className="link link-hover" href='https://youtu.be/htt7wA31LUc' target='_blank'>First Outlet</a>
+                    <a className="link link-hover"><Link to='/*'>Customers' Gallery</Link></a>
+                    <a className="link link-hover"><Link to='/*'>Company Policy</Link></a>
                     <a className="link link-hover"><Link to='/*'>Careers</Link></a>
                     <a className="link link-hover"><Link to='/*'>Conditions</Link></a>
                 </nav>
@@ -43,7 +43,7 @@ const Footer = () => {
             <footer className="footer sm:footer-horizontal bg-neutral-800 mt-[-5px] text-white items-center pb-7 px-10">
                 <aside className="flex items-center">
                     <img src={logo} className="w-10 md:w-13" />
-                    <p>Copyright © {new Date().getFullYear()} - All rights reserved by XPoint : <a href="https://adib-mern.netlify.app/" target='_blank'>V - 1.2.1</a></p>
+                    <p>Copyright © {new Date().getFullYear()} - All rights reserved by XPoint : <a href="https://adib-mern.netlify.app/" target='_blank'>V - 2.0</a></p>
                 </aside>
             </footer>
         </div>

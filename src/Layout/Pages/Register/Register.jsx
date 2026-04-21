@@ -27,7 +27,7 @@ const Register = () => {
         if (!passwordFormat.test(password)) {
             Swal.fire({
                 title: "Sorry :(",
-                text: "Password must be at least 8 characters long and include both letters and numbers",
+                text: "Password must be at least 8 characters long and include both letters and numbers, avoid special characters (@, #, $, %, &, etc)",
                 confirmButtonText: "Okay",
                 customClass: {
                     confirmButton: 'bg-neutral-900 hover:bg-neutral-800 text-white px-4 py-2 rounded'

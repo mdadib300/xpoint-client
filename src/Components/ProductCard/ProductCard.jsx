@@ -10,6 +10,11 @@ const ProductCard = ({ productInfo }) => {
             <Link to={`/details/${_id}`}>
                 <div className='transform transition duration-300 ease-out hover:-translate-y-1 rounded-sm'>
                     <figure>
+                        {productInfo.discountPrice && (
+                            <span className="absolute top-2 left-2 bg-white text-black text-xs px-2 py-1 rounded">
+                                SALE
+                            </span>
+                        )}
                         <div class="aspect-[4/5] w-80">
                             <img src={images[0]} class="w-full h-full object-cover" />
                         </div>
@@ -18,6 +23,7 @@ const ProductCard = ({ productInfo }) => {
                         <div>
                             <p className='text-lg font-semibold uppercase'>{name}</p>
                         </div>
+
                         <p>{category}, {fit}</p>
                         <div>
                             <div className="font-semibold">

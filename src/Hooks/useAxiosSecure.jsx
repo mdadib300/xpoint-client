@@ -1,38 +1,40 @@
 import axios from "axios";
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../Providers/AuthProvider";
+import { useEffect } from "react";
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:3000/'
-})
+    baseURL: 'https://xpoint-server.vercel.app/'
+});
 
 const useAxiosSecure = () => {
     const navigate = useNavigate();
-    const {logOutUser} = useContext(AuthContext);
-    // request interceptor to add authorization header for every secure call to the api
-    axiosSecure.interceptors.request.use(function (config) {
-        const token = localStorage.getItem('access-token')
-        // console.log('req stopped by interceptor', token);
-        config.headers.authorization = `Bearer ${token}`;
-        return config;
-    }, function (error) {
-        return Promise.reject(error);
-    })
 
+    useEffect(() => {
+        // REQUEST interceptor → attach token
+        axiosSecure.interceptors.request.use(config => {
+            const token = localStorage.getItem("access-token");
 
-    // intercepts 401 and 403 status
-    axiosSecure.interceptors.response.use(function(response){
-        return response;
-    }, async(error)=>{
-        const status = error.response.status;
-        // console.log('status error in the interceptor', status);
-        if(status === 401 || status === 403){
-            await logOutUser();
-            navigate('/login')
-        }
-        return Promise.reject(error);
-    })
+            if (token) {
+                config.headers.authorization = `Bearer ${token}`;
+            }
+
+            return config;
+        });
+
+        // RESPONSE interceptor → handle auth errors
+        axiosSecure.interceptors.response.use(
+            res => res,
+            err => {
+                if (err.response?.status === 401 || err.response?.status === 403) {
+                    console.log("Unauthorized → logging out");
+                    localStorage.removeItem("access-token");
+                    navigate('/login');
+                }
+                return Promise.reject(err);
+            }
+        );
+
+    }, [navigate]);
 
     return axiosSecure;
 };

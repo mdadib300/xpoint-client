@@ -15,6 +15,8 @@ const Navbar = () => {
     const pantLinks = <>
         <NavLink to='category/denim-pants'><li className='hover:underline p-1'><a>Denim Pants</a></li></NavLink>
         <NavLink to='category/twill-pants'><li className='hover:underline p-1'><a>Twill Pants</a></li></NavLink>
+        <NavLink to='category/formal-pants'><li className='hover:underline p-1'><a>Formal Pants</a></li></NavLink>
+        <NavLink to='category/trousers'><li className='hover:underline p-1'><a>Trousers</a></li></NavLink>
         <NavLink to='category/shorts'><li className='hover:underline p-1'><a>Shorts</a></li></NavLink>
     </>;
     const upperWear = <>
