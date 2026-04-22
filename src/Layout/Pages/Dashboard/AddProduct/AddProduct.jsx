@@ -1,17 +1,16 @@
 import { useState } from "react";
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
-import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 
-// Image hosting
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+// Cloudinary config
+const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
 
 const AddProduct = () => {
 
-    const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
-    const [loading, setLoading] = useState(false); // loader state
+    const [loading, setLoading] = useState(false);
 
     const handleAddProduct = async (e) => {
         e.preventDefault();
@@ -20,7 +19,6 @@ const AddProduct = () => {
         try {
             setLoading(true);
 
-            //  Show loader popup
             Swal.fire({
                 title: "Uploading...",
                 text: "Please wait while we add your product",
@@ -30,7 +28,7 @@ const AddProduct = () => {
                 }
             });
 
-            // ---------------- Images ----------------
+            // -------- IMAGES --------
             const imageFiles = [
                 form.image1.files[0],
                 form.image2.files[0],
@@ -47,20 +45,22 @@ const AddProduct = () => {
                 return;
             }
 
-            // Upload images
+            // Cloudinary Upload
             const uploadPromises = imageFiles.map(file => {
                 const formData = new FormData();
-                formData.append("image", file);
+                formData.append("file", file);
+                formData.append("upload_preset", uploadPreset);
 
-                return axiosPublic.post(image_hosting_api, formData, {
-                    headers: { "content-type": "multipart/form-data" },
-                });
+                return fetch(cloudinaryUrl, {
+                    method: "POST",
+                    body: formData
+                }).then(res => res.json());
             });
 
             const responses = await Promise.all(uploadPromises);
-            const uploadedImages = responses.map(res => res.data.data.display_url);
+            const uploadedImages = responses.map(res => res.secure_url);
 
-            // ---------------- Other Fields ----------------
+            // -------- OTHER FIELDS --------
             const sizes = form.sizes.value
                 ? form.sizes.value.split(',').map(s => s.trim())
                 : [];
@@ -80,10 +80,9 @@ const AddProduct = () => {
                 images: uploadedImages
             };
 
-            // ---------------- Save to DB ----------------
             const res = await axiosSecure.post('/products', productInfo);
 
-            Swal.close(); //  close loading popup
+            Swal.close();
 
             if (res.data.insertedId) {
                 form.reset();
@@ -101,7 +100,7 @@ const AddProduct = () => {
         } catch (error) {
             console.error("Add Product Error:", error);
 
-            Swal.close(); //  ensure loader closes
+            Swal.close();
 
             Swal.fire({
                 title: "Error",
@@ -110,7 +109,7 @@ const AddProduct = () => {
             });
 
         } finally {
-            setLoading(false); //  always stop loader
+            setLoading(false);
         }
     };
 
@@ -179,7 +178,6 @@ const AddProduct = () => {
                     <input type="file" name="image3" className="file-input" />
                     <br />
 
-                    {/* BUTTON WITH LOADER */}
                     <input
                         className="btn btn-wide btn-outline btn-neutral"
                         type="submit"

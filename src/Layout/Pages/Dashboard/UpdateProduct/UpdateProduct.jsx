@@ -1,15 +1,15 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+// Cloudinary config
+const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
 
 const UpdateProduct = () => {
     const product = useLoaderData();
     const axiosSecure = useAxiosSecure();
-    const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
 
     const handleUpdateProduct = async (e) => {
@@ -17,7 +17,6 @@ const UpdateProduct = () => {
         const form = e.target;
 
         try {
-            // ---------------- Images ----------------
             const imageFiles = [
                 form.image1.files[0],
                 form.image2.files[0],
@@ -29,25 +28,25 @@ const UpdateProduct = () => {
             if (imageFiles.length > 0) {
                 const uploadPromises = imageFiles.map(file => {
                     const formData = new FormData();
-                    formData.append("image", file);
+                    formData.append("file", file);
+                    formData.append("upload_preset", uploadPreset);
 
-                    return axiosPublic.post(image_hosting_api, formData, {
-                        headers: { "content-type": "multipart/form-data" },
-                    });
+                    return fetch(cloudinaryUrl, {
+                        method: "POST",
+                        body: formData
+                    }).then(res => res.json());
                 });
 
                 const responses = await Promise.all(uploadPromises);
-                uploadedImages = responses.map(res => res.data.data.display_url);
+                uploadedImages = responses.map(res => res.secure_url);
             }
 
             const finalImages = [...(product.images || [])];
 
-            // Replace images one by one
             uploadedImages.forEach((img, index) => {
                 finalImages[index] = img;
             });
 
-            // ---------------- Other Fields ----------------
             const sizes = form.sizes.value
                 ? form.sizes.value.split(',').map(s => s.trim())
                 : [];
@@ -64,8 +63,8 @@ const UpdateProduct = () => {
             const productInfo = {
                 name: form.name.value,
                 category: form.category.value,
-                price: price,
-                discountPrice: discountPrice,
+                price,
+                discountPrice,
                 fit: form.fit.value,
                 sizes,
                 colors,
@@ -73,7 +72,6 @@ const UpdateProduct = () => {
                 images: finalImages
             };
 
-            // ---------------- Update DB ----------------
             const res = await axiosSecure.patch(`/products/${product._id}`, productInfo);
 
             if (res.data.modifiedCount > 0) {

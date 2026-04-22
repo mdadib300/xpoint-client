@@ -2,17 +2,16 @@ import { useState } from "react";
 import useUserProfile from "../../../../Hooks/useUserProfile";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+// Cloudinary config
+const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
 
 const Profile = () => {
 
     const [profile, loading, setProfile] = useUserProfile();
     const axiosSecure = useAxiosSecure();
-    const axiosPublic = useAxiosPublic();
-
     const [editMode, setEditMode] = useState(false);
 
     if (loading) {
@@ -24,18 +23,27 @@ const Profile = () => {
         const form = e.target;
 
         try {
+            Swal.fire({
+                title: "Updating...",
+                allowOutsideClick: false,
+                didOpen: () => Swal.showLoading()
+            });
+
             let photoURL = profile.photoURL;
 
-            // IMAGE UPLOAD
+            // -------- IMAGE UPLOAD --------
             if (form.photo.files[0]) {
                 const formData = new FormData();
-                formData.append("image", form.photo.files[0]);
+                formData.append("file", form.photo.files[0]);
+                formData.append("upload_preset", uploadPreset);
 
-                const res = await axiosPublic.post(image_hosting_api, formData, {
-                    headers: { "content-type": "multipart/form-data" }
+                const res = await fetch(cloudinaryUrl, {
+                    method: "POST",
+                    body: formData
                 });
 
-                photoURL = res.data.data.display_url;
+                const data = await res.json();
+                photoURL = data.secure_url;
             }
 
             const updatedData = {
@@ -47,19 +55,19 @@ const Profile = () => {
 
             const res = await axiosSecure.patch('/users/profile', updatedData);
 
+            Swal.close();
+
             if (res.data.modifiedCount > 0) {
                 setProfile(prev => ({ ...prev, ...updatedData }));
                 setEditMode(false);
 
-                Swal.fire({
-                    title: "Profile Updated",
-                    confirmButtonColor: "#262626"
-                });
+                Swal.fire("Updated", "Profile updated successfully", "success");
             }
 
         } catch (error) {
             console.error(error);
-            Swal.fire("Error updating profile");
+            Swal.close();
+            Swal.fire("Error", "Update failed", "error");
         }
     };
 
@@ -73,8 +81,7 @@ const Profile = () => {
                     <>
                         <img
                             src={profile?.photoURL || "https://i.ibb.co/4pDNDk1/avatar.png"}
-                            alt="profile"
-                            className="w-24 h-24 rounded-full mx-auto mb-4"
+                            className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
                         />
 
                         <p><b>Name:</b> {profile?.name}</p>
@@ -93,7 +100,6 @@ const Profile = () => {
                     <form onSubmit={handleUpdate} className="space-y-4">
 
                         <input
-                            type="text"
                             name="name"
                             defaultValue={profile?.name}
                             className="input w-full bg-white border"
@@ -101,7 +107,6 @@ const Profile = () => {
                         />
 
                         <input
-                            type="text"
                             name="phone"
                             defaultValue={profile?.phone}
                             className="input w-full bg-white border"
@@ -109,26 +114,23 @@ const Profile = () => {
                         />
 
                         <input
-                            type="text"
                             name="address"
                             defaultValue={profile?.address}
                             className="input w-full bg-white border"
                             placeholder="Address"
                         />
 
-                        <label className="label">Upload Profile Image</label>
-                        <input type="file" name="photo" className="file-input" />
+                        <input type="file" name="photo" className="file-input w-full" />
 
-                        <div>
-                            <button className="btn btn-neutral w-full mb-2">Save</button>
-                            <button
-                                type="button"
-                                onClick={() => setEditMode(false)}
-                                className="btn btn-outline w-full"
-                            >
-                                Cancel
-                            </button>
-                        </div>
+                        <button className="btn btn-neutral w-full">Save</button>
+
+                        <button
+                            type="button"
+                            onClick={() => setEditMode(false)}
+                            className="btn btn-outline w-full"
+                        >
+                            Cancel
+                        </button>
 
                     </form>
                 )}
