@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
@@ -7,15 +8,29 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddProduct = () => {
+
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
+    const [loading, setLoading] = useState(false); // loader state
 
     const handleAddProduct = async (e) => {
         e.preventDefault();
         const form = e.target;
 
         try {
-            // Images
+            setLoading(true);
+
+            //  Show loader popup
+            Swal.fire({
+                title: "Uploading...",
+                text: "Please wait while we add your product",
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            // ---------------- Images ----------------
             const imageFiles = [
                 form.image1.files[0],
                 form.image2.files[0],
@@ -23,15 +38,11 @@ const AddProduct = () => {
             ].filter(Boolean);
 
             if (imageFiles.length === 0) {
+                setLoading(false);
                 Swal.fire({
                     title: "Image Required",
                     text: "Please upload at least one product image.",
-                    icon: "warning",
-                    confirmButtonText: "Okay",
-                    customClass: {
-                        confirmButton: "bg-neutral-900 hover:bg-neutral-800 text-white px-4 py-2 rounded"
-                    },
-                    buttonsStyling: false
+                    icon: "warning"
                 });
                 return;
             }
@@ -49,7 +60,7 @@ const AddProduct = () => {
             const responses = await Promise.all(uploadPromises);
             const uploadedImages = responses.map(res => res.data.data.display_url);
 
-            // Other Fields
+            // ---------------- Other Fields ----------------
             const sizes = form.sizes.value
                 ? form.sizes.value.split(',').map(s => s.trim())
                 : [];
@@ -69,11 +80,14 @@ const AddProduct = () => {
                 images: uploadedImages
             };
 
-            // Save to DB
+            // ---------------- Save to DB ----------------
             const res = await axiosSecure.post('/products', productInfo);
+
+            Swal.close(); //  close loading popup
 
             if (res.data.insertedId) {
                 form.reset();
+
                 Swal.fire({
                     title: "Product Added Successfully",
                     confirmButtonText: "Okay",
@@ -86,11 +100,17 @@ const AddProduct = () => {
 
         } catch (error) {
             console.error("Add Product Error:", error);
+
+            Swal.close(); //  ensure loader closes
+
             Swal.fire({
                 title: "Error",
                 text: "Something went wrong while adding product.",
                 icon: "error"
             });
+
+        } finally {
+            setLoading(false); //  always stop loader
         }
     };
 
@@ -159,7 +179,13 @@ const AddProduct = () => {
                     <input type="file" name="image3" className="file-input" />
                     <br />
 
-                    <input className="btn btn-wide btn-outline btn-neutral" type="submit" value="Add" />
+                    {/* BUTTON WITH LOADER */}
+                    <input
+                        className="btn btn-wide btn-outline btn-neutral"
+                        type="submit"
+                        value={loading ? "Adding..." : "Add"}
+                        disabled={loading}
+                    />
 
                 </fieldset>
             </form>
