@@ -1,6 +1,7 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 // Cloudinary config
 const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
@@ -8,43 +9,59 @@ const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
 
 const UpdateProduct = () => {
+
     const product = useLoaderData();
     const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
 
+    // store new uploaded images
+    const [images, setImages] = useState([null, null, null]);
+
+    // loading per image
+    const [imgLoading, setImgLoading] = useState([false, false, false]);
+
+    // -------- IMAGE UPLOAD --------
+    const handleImageUpload = async (file, index) => {
+        if (!file) return;
+
+        const newLoading = [...imgLoading];
+        newLoading[index] = true;
+        setImgLoading(newLoading);
+
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", uploadPreset);
+
+        try {
+            const res = await fetch(cloudinaryUrl, {
+                method: "POST",
+                body: formData
+            }).then(res => res.json());
+
+            const newImages = [...images];
+            newImages[index] = res.secure_url;
+            setImages(newImages);
+
+        } catch (error) {
+            console.error("Upload failed", error);
+        }
+
+        newLoading[index] = false;
+        setImgLoading([...newLoading]);
+    };
+
+    // -------- UPDATE PRODUCT --------
     const handleUpdateProduct = async (e) => {
         e.preventDefault();
         const form = e.target;
 
         try {
-            const imageFiles = [
-                form.image1.files[0],
-                form.image2.files[0],
-                form.image3.files[0]
-            ].filter(Boolean);
 
-            let uploadedImages = [];
-
-            if (imageFiles.length > 0) {
-                const uploadPromises = imageFiles.map(file => {
-                    const formData = new FormData();
-                    formData.append("file", file);
-                    formData.append("upload_preset", uploadPreset);
-
-                    return fetch(cloudinaryUrl, {
-                        method: "POST",
-                        body: formData
-                    }).then(res => res.json());
-                });
-
-                const responses = await Promise.all(uploadPromises);
-                uploadedImages = responses.map(res => res.secure_url);
-            }
-
+            // merge old + new images
             const finalImages = [...(product.images || [])];
 
-            uploadedImages.forEach((img, index) => {
-                finalImages[index] = img;
+            images.forEach((img, index) => {
+                if (img) finalImages[index] = img;
             });
 
             const sizes = form.sizes.value
@@ -191,10 +208,21 @@ const UpdateProduct = () => {
                     />
                     <br />
 
+                    {/* -------- UPDATED IMAGE SECTION -------- */}
                     <label className="label">Product Images (optional)</label>
-                    <input type="file" name="image1" className="file-input" />
-                    <input type="file" name="image2" className="file-input" />
-                    <input type="file" name="image3" className="file-input" />
+
+                    {[0,1,2].map((i) => (
+                        <div key={i} className="flex items-center gap-2 mb-2">
+                            <input
+                                type="file"
+                                className="file-input"
+                                onChange={(e) => handleImageUpload(e.target.files[0], i)}
+                            />
+                            {imgLoading[i] && <span className="loading loading-spinner loading-sm"></span>}
+                            {images[i] && !imgLoading[i] && <span className="text-green-600 text-sm">✓ Uploaded</span>}
+                        </div>
+                    ))}
+
                     <br />
 
                     <input

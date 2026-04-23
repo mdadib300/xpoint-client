@@ -15,7 +15,10 @@ const Profile = () => {
     const [editMode, setEditMode] = useState(false);
 
     if (loading) {
-        return <p className="text-center mt-20">Loading profile...</p>;
+        return <div>
+            <p className="text-center mb-3 mt-20"><span className="loading loading-spinner loading-md"></span></p>
+            <p className="text-center">Loading profile...</p>
+        </div>;
     }
 
     const handleUpdate = async (e) => {
