@@ -35,7 +35,7 @@ const Slider = () => {
                     <div className="">
                         <SplitText
                             text="THE ELEGANCE OF MENSWEAR"
-                            className="text-2xl md:text-4xl lg:text-6xl font-bold text-white"
+                            className="text-2xl md:text-4xl lg:text-6xl font-bold text-white mt-1 md:mt-0"
                             delay={150}
                             duration={1}
                             ease="power3.out"

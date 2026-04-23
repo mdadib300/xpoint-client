@@ -21,7 +21,7 @@ const ProductCard = ({ productInfo }) => {
                     </figure>
                     <div className="card-body">
                         <div>
-                            <p className='text-lg font-semibold uppercase'>{name}</p>
+                            <p className='text-md md:text-lg font-bold uppercase'>{name}</p>
                         </div>
 
                         <p>{category}, {fit}</p>

@@ -125,7 +125,7 @@ const Navbar = () => {
                                     isAdmin ? 
                                     <Link to="/dashboard/profile">
                                         <div className="avatar tooltip tooltip-left" data-tip="Admin Dashboard">
-                                            <MdAdminPanelSettings className="text-xl md:text-3xl w-13" />
+                                            <MdAdminPanelSettings className="text-2xl md:text-3xl w-13" />
                                         </div>
                                     </Link>
                                      :

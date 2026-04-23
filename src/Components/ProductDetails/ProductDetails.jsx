@@ -116,8 +116,8 @@ const ProductDetails = () => {
                             infiniteLoop
                             showThumbs={true}
                             showArrows={true}
-                            emulateTouch={true}
-                            swipeable={true}
+                            emulateTouch={false}
+                            swipeable={false}
                             renderThumbs={() =>
                                 images.map((img, i) => (
                                     <img key={i} src={img} alt={`thumb-${i}`} />
