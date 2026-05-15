@@ -6,6 +6,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import cover2 from '../../../../assets/images/slider/cover2.jpg';
 import cover3 from '../../../../assets/images/slider/cover3.jpg';
 import cover4 from '../../../../assets/images/slider/bannerNew.jpeg';
+import cover5 from '../../../../assets/images/slider/Summer.png';
 import header from '../../../../assets/images/slider/head1.png';
 import { Link } from 'react-router-dom';
 
@@ -65,7 +66,7 @@ const Slider = () => {
                 showArrows={false}
                 showIndicators={false}
             >
-                <Link to='category/denim-pants'>
+                <Link to='category/full-sleeve-shirts'>
                     <div
                         className="hero w-8/9 mx-auto max-h-14/15 aspect-[2/1] bg-cover bg-center"
                         style={{
@@ -74,11 +75,11 @@ const Slider = () => {
                     >
                     </div>
                 </Link>
-                <Link to='/'>
+                <Link to='/category/half-sleeve-shirts'>
                     <div
                         className="hero w-8/9 mx-auto max-h-14/15 aspect-[2/1] bg-cover bg-center"
                         style={{
-                            backgroundImage: `url(${cover2})`,
+                            backgroundImage: `url(${cover5})`,
                         }}
                     >
                     </div></Link>

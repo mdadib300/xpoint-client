@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
+import imageCompression from "browser-image-compression";
 
 // Cloudinary config
 const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
@@ -27,8 +28,16 @@ const AddProduct = () => {
         newLoading[index] = true;
         setImgLoading(newLoading);
 
+        const compressedFile = await imageCompression(file, {
+            maxSizeMB: 1.5,
+            maxWidthOrHeight: 2200,
+            useWebWorker: true,
+            initialQuality: 0.9,
+            fileType: "image/webp"
+        });
+
         const formData = new FormData();
-        formData.append("file", file);
+        formData.append("file", compressedFile);
         formData.append("upload_preset", uploadPreset);
 
         try {

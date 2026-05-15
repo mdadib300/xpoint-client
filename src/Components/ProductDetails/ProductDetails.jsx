@@ -111,7 +111,7 @@ const ProductDetails = () => {
                 <div className="hero-content items-start gap-5 md:gap-10 flex-col lg:flex-row">
 
                     {/* Images */}
-                    <div className="w-full">
+                    {/* <div className="w-full">
                         <Carousel
                             infiniteLoop
                             showThumbs={true}
@@ -130,6 +130,42 @@ const ProductDetails = () => {
                                 </div>
                             ))}
                         </Carousel>
+                    </div> */}
+
+                    {/* Images */}
+                    <div className="w-full">
+                        <Carousel
+                            infiniteLoop
+                            showThumbs={true}
+                            showArrows={true}
+                            emulateTouch={false}
+                            swipeable={false}
+                            renderThumbs={() =>
+                                images.map((img, i) => (
+                                    <img
+                                        key={i}
+                                        src={img?.replace(
+                                            "/upload/",
+                                            "/upload/f_auto,q_auto,w_150/"
+                                        )}
+                                        alt={`thumb-${i}`}
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                ))
+                            }
+                        >
+                            {images.map((img, i) => (
+                                <div key={i}>
+                                    <ZoomImage
+                                        src={img?.replace(
+                                            "/upload/",
+                                            "/upload/f_auto,q_auto,w_900/"
+                                        )}
+                                    />
+                                </div>
+                            ))}
+                        </Carousel>
                     </div>
 
                     {/* Product Info */}
@@ -141,17 +177,11 @@ const ProductDetails = () => {
                             <p className="text-xl my-2"><b>Fit:</b> {fit || "Regular"}</p>
 
                             <p className="text-xl my-2">
-                                <b>Sizes:</b>{" "}
-                                {sizes?.map((size, i) => (
-                                    <span key={i}>{size} | </span>
-                                ))}
+                                <b>Sizes:</b> {sizes?.length ? sizes.join(" | ") : "N/A"}
                             </p>
 
                             <p className="text-xl my-2">
-                                <b>Colors:</b>{" "}
-                                {colors?.map((color, i) => (
-                                    <span key={i}>{color} | </span>
-                                ))}
+                                <b>Colors:</b> {colors?.length ? colors.join(" | ") : "N/A"}
                             </p>
 
                             <div className="text-xl mt-2">

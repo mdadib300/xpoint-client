@@ -1,10 +1,9 @@
-import useAllProducts from '../../../../Hooks/useAllProducts';
+import useSomeProducts from '../../../../Hooks/useSomeProducts';
 import Title from '../../../../Components/Title/Title';
 import ProductDisplay from '../../../../Components/ProductDisplay/ProductDisplay';
 
 const NewArrival = () => {
-    const [products, loading,] = useAllProducts();
-    const latestProducts = [...products].slice(0, 4);
+    const [someProducts, loading,] = useSomeProducts();
     return (
         <div className='bg-white text-black'>
             <Title
@@ -20,7 +19,7 @@ const NewArrival = () => {
                         </div>
                     </div>
                 ) : (
-                    <ProductDisplay products={latestProducts} />
+                    <ProductDisplay products={someProducts} />
                 )
             }
         </div>

@@ -1,5 +1,8 @@
 import image from '../../../../assets/images/export/export.png';
 import logo from '../../../../assets/images/xpoint-full-logo.png';
+import { FaSquareFacebook } from "react-icons/fa6";
+import CustomButton from '../../../../Components/CustomButton/CustomButton';
+import DotGrid from './DotGrid';
 
 const Export = () => {
     return (
@@ -17,6 +20,15 @@ const Export = () => {
                             XPoint brings you a curated collection of authentic export menswear, directly from the source—now available both online and offline.
                         </p>
                     </div>
+                </div>
+            </div>
+            <div className='flex flex-col md:flex-row justify-between items-center w-8/9 mx-auto my-10 md:my-20 bg-neutral-800 text-white py-5 px-5 md:px-15 rounded-md'>
+                <div className='text-center md:text-left'>
+                    <h1 className='text-3xl mb-3'>Follow us on <FaSquareFacebook className='inline' /></h1>
+                    <p className='text-lg'>Join the family trusted by 26k+ people!</p>
+                </div>
+                <div className='mt-4 md:mt-0 animate-pulse'>
+                    <a href="https://www.facebook.com/Xpoint.com.bd" target='_blank'><CustomButton text={"Visit Page"}></CustomButton></a>
                 </div>
             </div>
         </div>

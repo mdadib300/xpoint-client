@@ -16,7 +16,17 @@ const ProductCard = ({ productInfo }) => {
                             </span>
                         )}
                         <div class="aspect-[4/5] w-80">
-                            <img src={images[0]} class="w-full h-full object-cover" />
+                            {/* <img src={images[0]} class="w-full h-full object-cover" /> */}
+                            <img
+                                src={images[0]?.replace(
+                                    "/upload/",
+                                    "/upload/f_auto,q_auto,w_600/"
+                                )}
+                                alt={name}
+                                loading="lazy"
+                                decoding="async"
+                                className="w-full h-full object-cover"
+                            />
                         </div>
                     </figure>
                     <div className="card-body">

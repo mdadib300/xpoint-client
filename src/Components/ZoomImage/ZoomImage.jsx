@@ -11,7 +11,7 @@ const ZoomImage = ({ src }) => {
 
         setZoomStyle({
             transformOrigin: `${x}% ${y}%`,
-            transform: "scale(3)",
+            transform: "scale(2)",
         });
     };
 
