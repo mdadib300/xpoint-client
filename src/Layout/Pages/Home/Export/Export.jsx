@@ -25,7 +25,7 @@ const Export = () => {
             <div className='flex flex-col md:flex-row justify-between items-center w-8/9 mx-auto my-10 md:my-20 bg-neutral-800 text-white py-5 px-5 md:px-15 rounded-md'>
                 <div className='text-center md:text-left'>
                     <h1 className='text-3xl mb-3'>Follow us on <FaSquareFacebook className='inline' /></h1>
-                    <p className='text-lg'>Join the family trusted by 26k+ people!</p>
+                    <p className='text-lg'>Join the family trusted by 30k+ people!</p>
                 </div>
                 <div className='mt-4 md:mt-0 animate-pulse'>
                     <a href="https://www.facebook.com/Xpoint.com.bd" target='_blank'><CustomButton text={"Visit Page"}></CustomButton></a>
