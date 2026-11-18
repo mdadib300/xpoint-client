@@ -1,3 +1,4 @@
+
 import { useContext } from "react";
 import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
@@ -15,11 +16,35 @@ const ProductDetails = () => {
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
 
-    const { _id, images, name, category, price, discountPrice, fit, sizes, colors, description } = useLoaderData();
+    const {
+        _id,
+        images,
+        name,
+        category,
+        price,
+        discountPrice,
+        fit,
+        sizes,
+        colors,
+        description,
+        isStockOut = false
+    } = useLoaderData();
+
     const [, refetch] = useCart();
 
     const handleCart = (e) => {
         e.preventDefault();
+
+        // PREVENT ADDING OUT-OF-STOCK PRODUCTS
+        if (isStockOut) {
+            Swal.fire({
+                icon: "warning",
+                title: "Stock Out",
+                text: "This product is currently unavailable.",
+                confirmButtonColor: "#262626"
+            });
+            return;
+        }
 
         if (user && user.email) {
 
@@ -82,6 +107,18 @@ const ProductDetails = () => {
                 })
                 .catch(err => {
                     console.error(err);
+
+                    if (err.response?.status === 409 &&
+                        err.response?.data?.message === "product_out_of_stock") {
+                        Swal.fire({
+                            icon: "warning",
+                            title: "Stock Out",
+                            text: "This product is currently unavailable.",
+                            confirmButtonColor: "#262626"
+                        });
+                        return;
+                    }
+
                     Swal.fire({
                         icon: "error",
                         title: "Something went wrong",
@@ -236,8 +273,13 @@ const ProductDetails = () => {
 
                                 <input
                                     type="submit"
-                                    value="Add to Cart"
-                                    className="btn btn-neutral w-full md:w-1/2 mt-4"
+                                    value={isStockOut ? "Stock Out" : "Add to Cart"}
+                                    disabled={isStockOut}
+                                    className={`btn w-full md:w-1/2 mt-4 ${
+                                        isStockOut
+                                            ? "btn-disabled bg-gray-300 text-gray-500 cursor-not-allowed"
+                                            : "btn-neutral"
+                                    }`}
                                 />
                             </fieldset>
                         </form>

@@ -27,7 +27,7 @@ const Footer = () => {
                 <nav>
                     <h6 className="footer-title">Social</h6>
                     <div className="grid grid-flow-col gap-4">
-                        <a href='https://www.facebook.com/Xpoint.com.bd' target='_blank'>
+                        <a href='https://www.facebook.com/XPointbd' target='_blank'>
                             <img src={fb} className='w-7' />
                         </a>
                         <a href='https://www.youtube.com/@xpoint-p9e' target='_blank'>
@@ -43,7 +43,7 @@ const Footer = () => {
             <footer className="footer sm:footer-horizontal bg-neutral-800 mt-[-5px] text-white items-center pb-7 px-10">
                 <aside className="flex items-center">
                     <img src={logo} className="w-10 md:w-13" />
-                    <p>Copyright © {new Date().getFullYear()} - All rights reserved by XPoint : <a href="https://adib-mern.netlify.app/" target='_blank'>V - 2.0.3</a></p>
+                    <p>Copyright © {new Date().getFullYear()} - All rights reserved by XPoint : <a href="https://adib-mern.netlify.app/" target='_blank'>V - 2.0.4</a></p>
                 </aside>
             </footer>
         </div>

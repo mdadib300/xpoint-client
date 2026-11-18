@@ -1,22 +1,30 @@
-import { Link } from "react-router-dom";
 
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ productInfo }) => {
 
-    const { _id, name, price, fit, images, category } = productInfo;
+    const { _id, name, price, fit, images, category, isStockOut } = productInfo;
 
     return (
         <div key={_id} className="card [@media(max-width:340px)]:w-35 w-40 md:w-60 lg:w-70 shadow-md h-full">
             <Link to={`/details/${_id}`}>
                 <div className='transform transition duration-300 ease-out hover:-translate-y-1 rounded-sm'>
-                    <figure>
+                    <figure className="relative">
                         {productInfo.discountPrice && (
-                            <span className="absolute top-2 left-2 bg-white text-black text-xs px-2 py-1 rounded">
+                            <span className="absolute top-2 left-2 z-10 bg-white text-black text-xs px-2 py-1 rounded">
                                 SALE
                             </span>
                         )}
-                        <div class="aspect-[4/5] w-80">
-                            {/* <img src={images[0]} class="w-full h-full object-cover" /> */}
+
+                        {/* STOCK OUT BADGE */}
+                        {isStockOut && (
+                            <span className="absolute top-2 right-2 z-10 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">
+                                STOCK OUT
+                            </span>
+                        )}
+
+                        <div className="aspect-[4/5] w-80">
+                            {/* <img src={images[0]} className="w-full h-full object-cover" /> */}
                             <img
                                 src={images[0]?.replace(
                                     "/upload/",
