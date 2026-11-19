@@ -4,9 +4,6 @@ import Swal from "sweetalert2";
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import { useNavigate } from "react-router-dom";
 
-// -----------------------------------add it to register
-
-
 const SocialLogin = () => {
     const { logInUserWithGoogle } = useContext(AuthContext);
     const axiosPublic = useAxiosPublic();
@@ -21,10 +18,10 @@ const SocialLogin = () => {
                     name: res.user?.displayName
                 }
                 axiosPublic.post('/users', userInfo)
-                .then(res=>{
-                    console.log(res.data);
-                    navigate('/')
-                })
+                    .then(res => {
+                        console.log(res.data);
+                        navigate('/')
+                    })
                 Swal.fire({
                     title: "Login Successful",
                     confirmButtonText: "Okay",

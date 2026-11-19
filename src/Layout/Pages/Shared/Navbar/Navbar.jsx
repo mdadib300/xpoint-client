@@ -24,7 +24,6 @@ const Navbar = () => {
         <NavLink to='category/half-sleeve-shirts'><li className='hover:underline p-1'><a>Half Sleeve Shirts</a></li></NavLink>
         <NavLink to='category/polo-t-shirts'><li className='hover:underline p-1'><a>Polo T-shirts</a></li></NavLink>
         <NavLink to='category/basic-t-shirts'><li className='hover:underline p-1'><a>Basic T-shirts</a></li></NavLink>
-        <NavLink to='category/drop-shoulder'><li className='hover:underline p-1'><a>Drop-Shoulder</a></li></NavLink>
     </>;
     const accessoriesLinks = <>
         <NavLink to='category/caps'><li className='hover:underline p-1'><a>Caps</a></li></NavLink>
@@ -32,11 +31,16 @@ const Navbar = () => {
         <NavLink to='category/wallets'><li className='hover:underline p-1'><a>Wallets</a></li></NavLink>
         <NavLink to='category/underwears'><li className='hover:underline p-1'><a>Underwears</a></li></NavLink>
     </>;
+    const winterLinks = <>
+        <NavLink to='category/hoodie'><li className='hover:underline p-1'><a>Hoodie</a></li></NavLink>
+        <NavLink to='category/jacket'><li className='hover:underline p-1'><a>Jacket</a></li></NavLink>
+        <NavLink to='category/shacket'><li className='hover:underline p-1'><a>Shacket</a></li></NavLink>
+        <NavLink to='category/sweater'><li className='hover:underline p-1'><a>Sweater</a></li></NavLink>
+        <NavLink to='category/high-neck'><li className='hover:underline p-1'><a>High-Neck</a></li></NavLink>
+        <NavLink to='category/sweat-shirt'><li className='hover:underline p-1'><a>Sweat Shirt</a></li></NavLink>
+    </>;
 
     const navbarLinks = <>
-        {/* <li><NavLink to="/">Home</NavLink></li> */}
-        {/* <li><NavLink to="/about">About & Contact</NavLink></li> */}
-        {/* <li><NavLink to="/return">Return & Exchange</NavLink></li> */}
         <li>
             <div className="dropdown dropdown-hover">
                 <div tabIndex={0} role="button" className="">
@@ -70,6 +74,18 @@ const Navbar = () => {
                     tabIndex={0}
                     className="menu menu-sm dropdown-content bg-neutral-800 text-white rounded-box z-1 mt-3 w-52 p-2 shadow text-black">
                     {accessoriesLinks}
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div className="dropdown dropdown-hover">
+                <div tabIndex={0} role="button" className="">
+                    Winter Fit
+                </div>
+                <ul
+                    tabIndex={0}
+                    className="menu menu-sm dropdown-content bg-neutral-800 text-white rounded-box z-1 mt-3 w-52 p-2 shadow text-black">
+                    {winterLinks}
                 </ul>
             </div>
         </li>

@@ -83,6 +83,7 @@ const UpdateProduct = () => {
                 price,
                 discountPrice,
                 fit: form.fit.value,
+                brand: form.brand.value,
                 sizes,
                 colors,
                 description: form.description.value || "Not Available",
@@ -146,11 +147,16 @@ const UpdateProduct = () => {
                         <option>Half Sleeve Shirts</option>
                         <option>Polo T-shirts</option>
                         <option>Basic T-shirts</option>
-                        <option>Drop-shoulder</option>
                         <option>Underwears</option>
                         <option>Belts</option>
                         <option>Caps</option>
                         <option>Wallets</option>
+                        <option>Hoodie</option>
+                        <option>Jacket</option>
+                        <option>Shacket</option>
+                        <option>Sweater</option>
+                        <option>High Neck</option>
+                        <option>Sweat Shirt</option>
                     </select>
                     <br />
 
@@ -196,6 +202,15 @@ const UpdateProduct = () => {
                         className="input bg-white border-gray-200"
                         name="fit"
                         defaultValue={product?.fit}
+                    />
+                    <br />
+
+                    <label className="label">Brand</label>
+                    <input
+                        type="text"
+                        className="input bg-white border-gray-200"
+                        name="brand"
+                        defaultValue={product?.brand}
                     />
                     <br />
 

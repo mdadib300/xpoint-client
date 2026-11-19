@@ -1,6 +1,5 @@
 import ScrollToTop from "../../../Components/ScrollToTop";
 
-
 const AboutUs = () => {
     return (
         <div className="px-3 md:px-7 bg-white text-black min-h-screen">

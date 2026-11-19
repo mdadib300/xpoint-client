@@ -3,10 +3,10 @@ import { Carousel } from 'react-responsive-carousel';
 import AnimatedContent from './AnimatedContent'
 import SplitText from "./SplitText";
 import { FaWhatsapp } from "react-icons/fa";
-import cover2 from '../../../../assets/images/slider/cover2.jpg';
-import cover3 from '../../../../assets/images/slider/cover3.jpg';
-import cover4 from '../../../../assets/images/slider/bannerNew.jpeg';
-import cover5 from '../../../../assets/images/slider/Summer.png';
+import coverW1 from '../../../../assets/images/slider/bannerNew.jpeg';
+import coverW2 from '../../../../assets/images/slider/IMG_1229.JPG.jpeg';
+import coverW3 from '../../../../assets/images/slider/cover3.jpg';
+// import coverS1 from '../../../../assets/images/slider/Summer.png';
 import header from '../../../../assets/images/slider/head1.png';
 import { Link } from 'react-router-dom';
 
@@ -66,29 +66,29 @@ const Slider = () => {
                 showArrows={false}
                 showIndicators={false}
             >
-                <Link to='category/full-sleeve-shirts'>
+                <Link to='category/jacket'>
                     <div
                         className="hero w-8/9 mx-auto max-h-14/15 aspect-[2/1] bg-cover bg-center"
                         style={{
-                            backgroundImage: `url(${cover4})`,
+                            backgroundImage: `url(${coverW2})`,
                         }}
                     >
                     </div>
                 </Link>
-                <Link to='/category/half-sleeve-shirts'>
+                <Link to='/category/shacket'>
                     <div
                         className="hero w-8/9 mx-auto max-h-14/15 aspect-[2/1] bg-cover bg-center"
                         style={{
-                            backgroundImage: `url(${cover5})`,
+                            backgroundImage: `url(${coverW1})`,
                         }}
                     >
                     </div></Link>
 
-                <Link to='/category/denim-pants'>
+                <Link to='/category/sweater'>
                     <div
                         className="hero w-8/9 mx-auto max-h-14/15 aspect-[2/1] bg-cover bg-center"
                         style={{
-                            backgroundImage: `url(${cover3})`,
+                            backgroundImage: `url(${coverW3})`,
                         }}
                     >
                     </div></Link>

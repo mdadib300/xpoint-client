@@ -94,6 +94,7 @@ const AddProduct = () => {
                 category: form.category.value,
                 price: parseInt(form.price.value),
                 fit: form.fit.value,
+                brand: form.brand.value,
                 sizes,
                 colors,
                 description: form.description.value || "Not Available",
@@ -148,11 +149,16 @@ const AddProduct = () => {
                         <option>Half Sleeve Shirts</option>
                         <option>Polo T-shirts</option>
                         <option>Basic T-shirts</option>
-                        <option>Drop-shoulder</option>
                         <option>Underwears</option>
                         <option>Belts</option>
                         <option>Caps</option>
                         <option>Wallets</option>
+                        <option>Hoodie</option>
+                        <option>Jacket</option>
+                        <option>Shacket</option>
+                        <option>Sweater</option>
+                        <option>High Neck</option>
+                        <option>Sweat Shirt</option>
                     </select>
                     <br />
 
@@ -169,6 +175,10 @@ const AddProduct = () => {
 
                     <label className="label">Add the Fit type</label>
                     <input type="text" className="input bg-white border-gray-200" name="fit" />
+                    <br />
+
+                    <label className="label">Add the Brand name</label>
+                    <input type="text" className="input bg-white border-gray-200" name="brand" />
                     <br />
 
                     <label className="label">Product Description</label>

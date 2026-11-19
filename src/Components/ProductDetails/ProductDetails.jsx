@@ -1,4 +1,3 @@
-
 import { useContext } from "react";
 import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
@@ -24,6 +23,7 @@ const ProductDetails = () => {
         price,
         discountPrice,
         fit,
+        brand,
         sizes,
         colors,
         description,
@@ -146,30 +146,6 @@ const ProductDetails = () => {
 
             <div className="hero pb-10">
                 <div className="hero-content items-start gap-5 md:gap-10 flex-col lg:flex-row">
-
-                    {/* Images */}
-                    {/* <div className="w-full">
-                        <Carousel
-                            infiniteLoop
-                            showThumbs={true}
-                            showArrows={true}
-                            emulateTouch={false}
-                            swipeable={false}
-                            renderThumbs={() =>
-                                images.map((img, i) => (
-                                    <img key={i} src={img} alt={`thumb-${i}`} />
-                                ))
-                            }
-                        >
-                            {images.map((img, i) => (
-                                <div key={i}>
-                                    <ZoomImage src={img} />
-                                </div>
-                            ))}
-                        </Carousel>
-                    </div> */}
-
-                    {/* Images */}
                     <div className="w-full">
                         <Carousel
                             infiniteLoop
@@ -211,6 +187,7 @@ const ProductDetails = () => {
 
                         <div className="py-6">
                             <p className="text-xl mb-2"><b>Product Type:</b> {category}</p>
+                            <p className="text-xl mb-2"><b>Brand:</b> {brand}</p>
                             <p className="text-xl my-2"><b>Fit:</b> {fit || "Regular"}</p>
 
                             <p className="text-xl my-2">
@@ -275,11 +252,10 @@ const ProductDetails = () => {
                                     type="submit"
                                     value={isStockOut ? "Stock Out" : "Add to Cart"}
                                     disabled={isStockOut}
-                                    className={`btn w-full md:w-1/2 mt-4 ${
-                                        isStockOut
+                                    className={`btn w-full md:w-1/2 mt-4 ${isStockOut
                                             ? "btn-disabled bg-gray-300 text-gray-500 cursor-not-allowed"
                                             : "btn-neutral"
-                                    }`}
+                                        }`}
                                 />
                             </fieldset>
                         </form>

@@ -1,4 +1,3 @@
-import React from 'react';
 import ScrollToTop from "../../../Components/ScrollToTop";
 import fb from '../../../assets/images/icons/facebook.png';
 import ig from '../../../assets/images/icons/instagram.png';

@@ -1,8 +1,7 @@
-import image from '../../../../assets/images/export/export.png';
+import image from '../../../../assets/images/export/export.jpg';
 import logo from '../../../../assets/images/xpoint-full-logo.png';
 import { FaSquareFacebook } from "react-icons/fa6";
 import CustomButton from '../../../../Components/CustomButton/CustomButton';
-import DotGrid from './DotGrid';
 
 const Export = () => {
     return (

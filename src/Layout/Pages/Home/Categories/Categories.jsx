@@ -4,7 +4,6 @@ import denim from '../../../../assets/images/categories/denim.jpg';
 import belt from '../../../../assets/images/categories/belt.jpg';
 import boxer from '../../../../assets/images/categories/boxer.jpg';
 import caps from '../../../../assets/images/categories/caps.jpg';
-import droptee from '../../../../assets/images/categories/droptee.jpg';
 import fullshirt from '../../../../assets/images/categories/fullshirt2.jpg';
 import halfshirt from '../../../../assets/images/categories/halfshirt.jpg';
 import polo from '../../../../assets/images/categories/polo.jpg';
@@ -12,6 +11,12 @@ import shorts from '../../../../assets/images/categories/shorts.jpg';
 import tee from '../../../../assets/images/categories/tee.jpg';
 import twill from '../../../../assets/images/categories/twill.jpg';
 import wallet from '../../../../assets/images/categories/wallet.jpg';
+import hoodie from '../../../../assets/images/categories/hoodie.png';
+import jacket from '../../../../assets/images/categories/jacket.png';
+import shacket from '../../../../assets/images/categories/shacket.jpg';
+import sweater from '../../../../assets/images/categories/sweater.png';
+import highNeck from '../../../../assets/images/categories/high.jpeg';
+import sweatshirt from '../../../../assets/images/categories/sweat.png';
 import { Link } from 'react-router-dom';
 
 const createSlug = (text) => {
@@ -19,18 +24,23 @@ const createSlug = (text) => {
 };
 
 const categoryData = [
+    { name: "Hoodie", slug: "hoodie", image: hoodie },
+    { name: "Jacket", slug: "jacket", image: jacket },
+    { name: "Shacket", slug: "shacket", image: shacket },
+    { name: "Sweater", slug: "sweater", image: sweater },
+    { name: "High Neck", slug: "high-neck", image: highNeck },
+    { name: "Sweat Shirt", slug: "sweat-shirt", image: sweatshirt },
     { name: "Denim Pants", slug: "denim-pants", image: denim },
     { name: "Twill Pants", slug: "twill-pants", image: twill },
-    { name: "Shorts", slug: "shorts", image: shorts },
     { name: "Full Sleeve Shirts", slug: "full-sleeve-shirts", image: fullshirt },
-    { name: "Half Sleeve Shirts", slug: "half-sleeve-shirts", image: halfshirt },
-    { name: "Basic T-Shirts", slug: "basic-tshirts", image: tee },
-    { name: "Drop-shoulder", slug: "drop-shoulder", image: droptee },
-    { name: "Polo T-Shirts", slug: "polo-tshirts", image: polo },
+    // { name: "Half Sleeve Shirts", slug: "half-sleeve-shirts", image: halfshirt },
+    // { name: "Basic T-Shirts", slug: "basic-tshirts", image: tee },
+    // { name: "Polo T-Shirts", slug: "polo-tshirts", image: polo },
+    // { name: "Shorts", slug: "shorts", image: shorts },
     { name: "Caps", slug: "caps", image: caps },
     { name: "Belts", slug: "belts", image: belt },
     { name: "Wallets", slug: "wallets", image: wallet },
-    { name: "Underwears", slug: "underwears", image: boxer },
+    // { name: "Underwears", slug: "underwears", image: boxer },
 ];
 
 const Categories = () => {
